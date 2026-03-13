@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "eventbridge": "https://aws.amazon.com/eventbridge/schemas/",
+    "aws": "https://aws.amazon.com/schemas/",
+    "id": {
+      "@id": "eventbridge:eventId",
+      "@type": "@id"
+    },
+    "version": "eventbridge:version",
+    "detail-type": "eventbridge:detailType",
+    "source": {
+      "@id": "eventbridge:source",
+      "@type": "@id"
+    },
+    "account": "eventbridge:account",
+    "time": {
+      "@id": "eventbridge:time",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "region": "eventbridge:region",
+    "resources": {
+      "@id": "eventbridge:resources",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "detail": "eventbridge:detail",
+    "EventBus": {
+      "@id": "eventbridge:EventBus",
+      "@context": {
+        "name": "eventbridge:eventBusName",
+        "arn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "policy": "eventbridge:policy"
+      }
+    },
+    "Rule": {
+      "@id": "eventbridge:Rule",
+      "@context": {
+        "name": "eventbridge:ruleName",
+        "arn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "eventPattern": "eventbridge:eventPattern",
+        "scheduleExpression": "eventbridge:scheduleExpression",
+        "state": "eventbridge:ruleState",
+        "description": "schema:description",
+        "roleArn": {
+          "@id": "aws:roleArn",
+          "@type": "@id"
+        }
+      }
+    },
+    "Target": {
+      "@id": "eventbridge:Target",
+      "@context": {
+        "targetId": "eventbridge:targetId",
+        "arn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "roleArn": {
+          "@id": "aws:roleArn",
+          "@type": "@id"
+        },
+        "input": "eventbridge:input",
+        "inputPath": "eventbridge:inputPath"
+      }
+    },
+    "Archive": {
+      "@id": "eventbridge:Archive",
+      "@context": {
+        "archiveName": "eventbridge:archiveName",
+        "eventSourceArn": {
+          "@id": "eventbridge:eventSourceArn",
+          "@type": "@id"
+        },
+        "retentionDays": {
+          "@id": "eventbridge:retentionDays",
+          "@type": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "state": "eventbridge:archiveState"
+      }
+    },
+    "Event": {
+      "@id": "eventbridge:Event",
+      "@context": {
+        "detailType": "eventbridge:detailType",
+        "source": {
+          "@id": "eventbridge:source",
+          "@type": "@id"
+        },
+        "eventBusName": "eventbridge:eventBusName"
+      }
+    }
+  }
+}

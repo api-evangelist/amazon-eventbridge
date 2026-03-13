@@ -1,0 +1,973 @@
+openapi: 3.1.0
+info:
+  title: Amazon EventBridge API
+  description: >-
+    Amazon EventBridge is a serverless event bus service that makes it easy to
+    connect your applications with data from a variety of sources. EventBridge
+    delivers a stream of real-time data from your own applications, SaaS
+    applications, and AWS services and routes that data to targets such as AWS
+    Lambda, Amazon SNS, Amazon SQS, and more.
+  version: '2015-10-07'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eventbridge/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://events.{region}.amazonaws.com
+    variables:
+      region:
+        default: us-east-1
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - eu-west-1
+          - eu-west-2
+          - eu-central-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-northeast-1
+paths:
+  /:
+    post:
+      operationId: PutEvents
+      summary: Put Events
+      description: >-
+        Sends custom events to Amazon EventBridge so that they can be matched to
+        rules.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-PutEvents'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/PutEventsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutEventsResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Events
+  /?PutRule:
+    post:
+      operationId: PutRule
+      summary: Put Rule
+      description: >-
+        Creates or updates the specified rule. Rules are enabled by default or
+        based on the provided State parameter.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-PutRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/PutRuleRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutRuleResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Rules
+  /?DescribeRule:
+    post:
+      operationId: DescribeRule
+      summary: Describe Rule
+      description: Describes the specified rule.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-DescribeRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DescribeRuleRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRuleResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Rules
+  /?ListRules:
+    post:
+      operationId: ListRules
+      summary: List Rules
+      description: >-
+        Lists your Amazon EventBridge rules. You can either list all the rules
+        or you can provide a prefix to match to the rule names.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-ListRules'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListRulesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRulesResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Rules
+  /?DeleteRule:
+    post:
+      operationId: DeleteRule
+      summary: Delete Rule
+      description: >-
+        Deletes the specified rule. Before you can delete the rule, you must
+        remove all targets.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-DeleteRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DeleteRuleRequest'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Rules
+  /?PutTargets:
+    post:
+      operationId: PutTargets
+      summary: Put Targets
+      description: >-
+        Adds the specified targets to the specified rule, or updates the targets
+        if they are already associated with the rule.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-PutTargets'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/PutTargetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutTargetsResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Targets
+  /?ListTargetsByRule:
+    post:
+      operationId: ListTargetsByRule
+      summary: List Targets By Rule
+      description: Lists the targets assigned to the specified rule.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-ListTargetsByRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListTargetsByRuleRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTargetsByRuleResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Targets
+  /?RemoveTargets:
+    post:
+      operationId: RemoveTargets
+      summary: Remove Targets
+      description: Removes the specified targets from the specified rule.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-RemoveTargets'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/RemoveTargetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveTargetsResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Targets
+  /?CreateEventBus:
+    post:
+      operationId: CreateEventBus
+      summary: Create Event Bus
+      description: Creates a new event bus within your account.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-CreateEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateEventBusRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEventBusResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Event Buses
+  /?DescribeEventBus:
+    post:
+      operationId: DescribeEventBus
+      summary: Describe Event Bus
+      description: >-
+        Displays details about an event bus in your account, including the
+        default event bus.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-DescribeEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DescribeEventBusRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeEventBusResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Event Buses
+  /?ListEventBuses:
+    post:
+      operationId: ListEventBuses
+      summary: List Event Buses
+      description: Lists all the event buses in your account, including the default event bus.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-ListEventBuses'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListEventBusesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEventBusesResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Event Buses
+  /?DeleteEventBus:
+    post:
+      operationId: DeleteEventBus
+      summary: Delete Event Bus
+      description: >-
+        Deletes the specified custom event bus or partner event bus. The default
+        event bus cannot be deleted.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-DeleteEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DeleteEventBusRequest'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Event Buses
+  /?CreateArchive:
+    post:
+      operationId: CreateArchive
+      summary: Create Archive
+      description: Creates an archive of events with the specified settings.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-CreateArchive'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateArchiveRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateArchiveResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Archives
+  /?ListArchives:
+    post:
+      operationId: ListArchives
+      summary: List Archives
+      description: Lists your archives.
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target-ListArchives'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListArchivesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListArchivesResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+        - Archives
+components:
+  parameters:
+    X-Amz-Target-PutEvents:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.PutEvents
+    X-Amz-Target-PutRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.PutRule
+    X-Amz-Target-DescribeRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.DescribeRule
+    X-Amz-Target-ListRules:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.ListRules
+    X-Amz-Target-DeleteRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.DeleteRule
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.PutTargets
+    X-Amz-Target-ListTargetsByRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.ListTargetsByRule
+    X-Amz-Target-RemoveTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.RemoveTargets
+    X-Amz-Target-CreateEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.CreateEventBus
+    X-Amz-Target-DescribeEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.DescribeEventBus
+    X-Amz-Target-ListEventBuses:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.ListEventBuses
+    X-Amz-Target-DeleteEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.DeleteEventBus
+    X-Amz-Target-CreateArchive:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.CreateArchive
+    X-Amz-Target-ListArchives:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+          - AWSEvents.ListArchives
+  schemas:
+    Event:
+      type: object
+      properties:
+        Source:
+          type: string
+          description: The source of the event.
+        DetailType:
+          type: string
+          description: Free-form string used to decide what fields to expect in the event detail.
+        Detail:
+          type: string
+          description: A valid JSON string containing the event detail.
+        Resources:
+          type: array
+          items:
+            type: string
+          description: AWS resources involved in the event.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus to receive the event.
+        Time:
+          type: string
+          format: date-time
+          description: The timestamp of the event.
+        TraceHeader:
+          type: string
+          description: An AWS X-Ray trace header for tracing the event.
+      required:
+        - Source
+        - DetailType
+        - Detail
+    Rule:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the rule.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the rule.
+        EventPattern:
+          type: string
+          description: The event pattern of the rule.
+        State:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+          description: The state of the rule.
+        Description:
+          type: string
+          description: The description of the rule.
+        ScheduleExpression:
+          type: string
+          description: The scheduling expression (e.g., cron or rate expression).
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus associated with the rule.
+    Target:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The ID of the target.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the target.
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        Input:
+          type: string
+          description: Valid JSON text passed to the target.
+        InputPath:
+          type: string
+          description: JSONPath to extract from the event and send to the target.
+        InputTransformer:
+          type: object
+          properties:
+            InputPathsMap:
+              type: object
+              additionalProperties:
+                type: string
+            InputTemplate:
+              type: string
+          description: Settings to transform input before sending to the target.
+      required:
+        - Id
+        - Arn
+    EventBus:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the event bus.
+        Arn:
+          type: string
+          description: The ARN of the event bus.
+        Policy:
+          type: string
+          description: The permissions policy of the event bus.
+    PutEventsRequest:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          description: The entry that defines an event in your system.
+      required:
+        - Entries
+    PutEventsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+          description: The number of failed entries.
+        Entries:
+          type: array
+          items:
+            type: object
+            properties:
+              EventId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
+    PutRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+        - Name
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    DescribeRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+      required:
+        - Name
+    DescribeRuleResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+        Description:
+          type: string
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+    ListRulesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
+    DeleteRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+        Force:
+          type: boolean
+      required:
+        - Name
+    PutTargetsRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+      required:
+        - Rule
+        - Targets
+    PutTargetsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+        FailedEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              TargetId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
+    ListTargetsByRuleRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+      required:
+        - Rule
+    ListTargetsByRuleResponse:
+      type: object
+      properties:
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        NextToken:
+          type: string
+    RemoveTargetsRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        Ids:
+          type: array
+          items:
+            type: string
+        Force:
+          type: boolean
+      required:
+        - Rule
+        - Ids
+    RemoveTargetsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+        FailedEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              TargetId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
+    CreateEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventSourceName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+        - Name
+    CreateEventBusResponse:
+      type: object
+      properties:
+        EventBusArn:
+          type: string
+    DescribeEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+    DescribeEventBusResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        Policy:
+          type: string
+    ListEventBusesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    ListEventBusesResponse:
+      type: object
+      properties:
+        EventBuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventBus'
+        NextToken:
+          type: string
+    DeleteEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+      required:
+        - Name
+    CreateArchiveRequest:
+      type: object
+      properties:
+        ArchiveName:
+          type: string
+        EventSourceArn:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        RetentionDays:
+          type: integer
+      required:
+        - ArchiveName
+        - EventSourceArn
+    CreateArchiveResponse:
+      type: object
+      properties:
+        ArchiveArn:
+          type: string
+        State:
+          type: string
+        CreationTime:
+          type: string
+          format: date-time
+    ListArchivesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventSourceArn:
+          type: string
+        State:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    ListArchivesResponse:
+      type: object
+      properties:
+        Archives:
+          type: array
+          items:
+            type: object
+            properties:
+              ArchiveName:
+                type: string
+              EventSourceArn:
+                type: string
+              State:
+                type: string
+              RetentionDays:
+                type: integer
+              SizeBytes:
+                type: integer
+              EventCount:
+                type: integer
+              CreationTime:
+                type: string
+                format: date-time
+        NextToken:
+          type: string
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+security:
+  - aws_sigv4: []
+tags:
+  - name: Events
+    description: Operations for putting events to EventBridge.
+  - name: Rules
+    description: Operations for managing EventBridge rules.
+  - name: Targets
+    description: Operations for managing rule targets.
+  - name: Event Buses
+    description: Operations for managing event buses.
+  - name: Archives
+    description: Operations for managing event archives.
