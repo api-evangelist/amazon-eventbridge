@@ -1,4 +1,4 @@
-name: Amazon EventBridge API
+name: Amazon EventBridge
 description: >-
   Amazon EventBridge is a serverless event bus service that makes it easy to
   connect your applications with data from a variety of sources. EventBridge
