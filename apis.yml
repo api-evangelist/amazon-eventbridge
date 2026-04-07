@@ -10,12 +10,12 @@ description: >-
 url: https://aws.amazon.com/eventbridge/
 baseURL: https://events.amazonaws.com
 tags:
-  - Events
-  - Event Bus
-  - Serverless
-  - Event-Driven
-  - Integration
   - AWS
+  - Event Bus
+  - Event-Driven
+  - Events
+  - Integration
+  - Serverless
 maintainer: Kin Lane
 properties:
   - type: Documentation

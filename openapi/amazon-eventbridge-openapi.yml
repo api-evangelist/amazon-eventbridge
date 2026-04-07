@@ -961,13 +961,13 @@ components:
 security:
   - aws_sigv4: []
 tags:
+  - name: Archives
+    description: Operations for managing event archives.
+  - name: Event Buses
+    description: Operations for managing event buses.
   - name: Events
     description: Operations for putting events to EventBridge.
   - name: Rules
     description: Operations for managing EventBridge rules.
   - name: Targets
     description: Operations for managing rule targets.
-  - name: Event Buses
-    description: Operations for managing event buses.
-  - name: Archives
-    description: Operations for managing event archives.
