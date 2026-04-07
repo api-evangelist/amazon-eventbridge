@@ -34,7 +34,7 @@ paths:
   /:
     post:
       operationId: PutEvents
-      summary: Put Events
+      summary: Amazon EventBridge Put Events
       description: >-
         Sends custom events to Amazon EventBridge so that they can be matched to
         rules.
@@ -62,7 +62,7 @@ paths:
   /?PutRule:
     post:
       operationId: PutRule
-      summary: Put Rule
+      summary: Amazon EventBridge Put Rule
       description: >-
         Creates or updates the specified rule. Rules are enabled by default or
         based on the provided State parameter.
@@ -90,7 +90,7 @@ paths:
   /?DescribeRule:
     post:
       operationId: DescribeRule
-      summary: Describe Rule
+      summary: Amazon EventBridge Describe Rule
       description: Describes the specified rule.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-DescribeRule'
@@ -116,7 +116,7 @@ paths:
   /?ListRules:
     post:
       operationId: ListRules
-      summary: List Rules
+      summary: Amazon EventBridge List Rules
       description: >-
         Lists your Amazon EventBridge rules. You can either list all the rules
         or you can provide a prefix to match to the rule names.
@@ -144,7 +144,7 @@ paths:
   /?DeleteRule:
     post:
       operationId: DeleteRule
-      summary: Delete Rule
+      summary: Amazon EventBridge Delete Rule
       description: >-
         Deletes the specified rule. Before you can delete the rule, you must
         remove all targets.
@@ -168,7 +168,7 @@ paths:
   /?PutTargets:
     post:
       operationId: PutTargets
-      summary: Put Targets
+      summary: Amazon EventBridge Put Targets
       description: >-
         Adds the specified targets to the specified rule, or updates the targets
         if they are already associated with the rule.
@@ -196,7 +196,7 @@ paths:
   /?ListTargetsByRule:
     post:
       operationId: ListTargetsByRule
-      summary: List Targets By Rule
+      summary: Amazon EventBridge List Targets By Rule
       description: Lists the targets assigned to the specified rule.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-ListTargetsByRule'
@@ -222,7 +222,7 @@ paths:
   /?RemoveTargets:
     post:
       operationId: RemoveTargets
-      summary: Remove Targets
+      summary: Amazon EventBridge Remove Targets
       description: Removes the specified targets from the specified rule.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-RemoveTargets'
@@ -248,7 +248,7 @@ paths:
   /?CreateEventBus:
     post:
       operationId: CreateEventBus
-      summary: Create Event Bus
+      summary: Amazon EventBridge Create Event Bus
       description: Creates a new event bus within your account.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-CreateEventBus'
@@ -274,7 +274,7 @@ paths:
   /?DescribeEventBus:
     post:
       operationId: DescribeEventBus
-      summary: Describe Event Bus
+      summary: Amazon EventBridge Describe Event Bus
       description: >-
         Displays details about an event bus in your account, including the
         default event bus.
@@ -302,7 +302,7 @@ paths:
   /?ListEventBuses:
     post:
       operationId: ListEventBuses
-      summary: List Event Buses
+      summary: Amazon EventBridge List Event Buses
       description: Lists all the event buses in your account, including the default event bus.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-ListEventBuses'
@@ -328,7 +328,7 @@ paths:
   /?DeleteEventBus:
     post:
       operationId: DeleteEventBus
-      summary: Delete Event Bus
+      summary: Amazon EventBridge Delete Event Bus
       description: >-
         Deletes the specified custom event bus or partner event bus. The default
         event bus cannot be deleted.
@@ -352,7 +352,7 @@ paths:
   /?CreateArchive:
     post:
       operationId: CreateArchive
-      summary: Create Archive
+      summary: Amazon EventBridge Create Archive
       description: Creates an archive of events with the specified settings.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-CreateArchive'
@@ -378,7 +378,7 @@ paths:
   /?ListArchives:
     post:
       operationId: ListArchives
-      summary: List Archives
+      summary: Amazon EventBridge List Archives
       description: Lists your archives.
       parameters:
         - $ref: '#/components/parameters/X-Amz-Target-ListArchives'
