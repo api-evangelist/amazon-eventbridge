@@ -15,21 +15,21 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://events.{region}.amazonaws.com
-    variables:
-      region:
-        default: us-east-1
-        enum:
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - eu-west-1
-          - eu-west-2
-          - eu-central-1
-          - ap-southeast-1
-          - ap-southeast-2
-          - ap-northeast-1
+- url: https://events.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
 paths:
   /:
     post:
@@ -39,13 +39,19 @@ paths:
         Sends custom events to Amazon EventBridge so that they can be matched to
         rules.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-PutEvents'
+      - $ref: '#/components/parameters/X-Amz-Target-PutEvents'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/PutEventsRequest'
+            examples:
+              PutEventsRequestExample:
+                summary: Default PutEvents request
+                x-microcks-default: true
+                value:
+                  Entries: []
       responses:
         '200':
           description: Successful response
@@ -53,12 +59,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEventsResponse'
+              examples:
+                PutEvents200Example:
+                  summary: Default PutEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    FailedEntryCount: 1
+                    Entries: []
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Events
+      - Events
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?PutRule:
     post:
       operationId: PutRule
@@ -67,13 +83,23 @@ paths:
         Creates or updates the specified rule. Rules are enabled by default or
         based on the provided State parameter.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-PutRule'
+      - $ref: '#/components/parameters/X-Amz-Target-PutRule'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/PutRuleRequest'
+            examples:
+              PutRuleRequestExample:
+                summary: Default PutRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  Description: Example description
+                  EventPattern: example
+                  ScheduleExpression: example
+                  State: ENABLED
       responses:
         '200':
           description: Successful response
@@ -81,25 +107,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRuleResponse'
+              examples:
+                PutRule200Example:
+                  summary: Default PutRule 200 response
+                  x-microcks-default: true
+                  value:
+                    RuleArn: arn:aws:service:us-east-1:123456789012:resource/example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Rules
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?DescribeRule:
     post:
       operationId: DescribeRule
       summary: Amazon EventBridge Describe Rule
       description: Describes the specified rule.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-DescribeRule'
+      - $ref: '#/components/parameters/X-Amz-Target-DescribeRule'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/DescribeRuleRequest'
+            examples:
+              DescribeRuleRequestExample:
+                summary: Default DescribeRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventBusName: example-name
       responses:
         '200':
           description: Successful response
@@ -107,12 +149,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRuleResponse'
+              examples:
+                DescribeRule200Example:
+                  summary: Default DescribeRule 200 response
+                  x-microcks-default: true
+                  value:
+                    Name: example-name
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    EventPattern: example
+                    ScheduleExpression: example
+                    State: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Rules
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?ListRules:
     post:
       operationId: ListRules
@@ -121,13 +176,22 @@ paths:
         Lists your Amazon EventBridge rules. You can either list all the rules
         or you can provide a prefix to match to the rule names.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-ListRules'
+      - $ref: '#/components/parameters/X-Amz-Target-ListRules'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/ListRulesRequest'
+            examples:
+              ListRulesRequestExample:
+                summary: Default ListRules request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  EventBusName: example-name
+                  NextToken: example
+                  Limit: 1
       responses:
         '200':
           description: Successful response
@@ -135,12 +199,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRulesResponse'
+              examples:
+                ListRules200Example:
+                  summary: Default ListRules 200 response
+                  x-microcks-default: true
+                  value:
+                    Rules: []
+                    NextToken: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Rules
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?DeleteRule:
     post:
       operationId: DeleteRule
@@ -149,13 +223,21 @@ paths:
         Deletes the specified rule. Before you can delete the rule, you must
         remove all targets.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-DeleteRule'
+      - $ref: '#/components/parameters/X-Amz-Target-DeleteRule'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/DeleteRuleRequest'
+            examples:
+              DeleteRuleRequestExample:
+                summary: Default DeleteRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventBusName: example-name
+                  Force: true
       responses:
         '200':
           description: Successful response
@@ -164,7 +246,10 @@ paths:
         '500':
           description: Internal server error
       tags:
-        - Rules
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?PutTargets:
     post:
       operationId: PutTargets
@@ -173,13 +258,21 @@ paths:
         Adds the specified targets to the specified rule, or updates the targets
         if they are already associated with the rule.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-PutTargets'
+      - $ref: '#/components/parameters/X-Amz-Target-PutTargets'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/PutTargetsRequest'
+            examples:
+              PutTargetsRequestExample:
+                summary: Default PutTargets request
+                x-microcks-default: true
+                value:
+                  Rule: example
+                  EventBusName: example-name
+                  Targets: []
       responses:
         '200':
           description: Successful response
@@ -187,25 +280,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutTargetsResponse'
+              examples:
+                PutTargets200Example:
+                  summary: Default PutTargets 200 response
+                  x-microcks-default: true
+                  value:
+                    FailedEntryCount: 1
+                    FailedEntries: []
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Targets
+      - Targets
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?ListTargetsByRule:
     post:
       operationId: ListTargetsByRule
-      summary: Amazon EventBridge List Targets By Rule
+      summary: Amazon EventBridge List Targets by Rule
       description: Lists the targets assigned to the specified rule.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-ListTargetsByRule'
+      - $ref: '#/components/parameters/X-Amz-Target-ListTargetsByRule'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/ListTargetsByRuleRequest'
+            examples:
+              ListTargetsByRuleRequestExample:
+                summary: Default ListTargetsByRule request
+                x-microcks-default: true
+                value:
+                  Rule: example
+                  EventBusName: example-name
+                  NextToken: example
+                  Limit: 1
       responses:
         '200':
           description: Successful response
@@ -213,25 +325,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTargetsByRuleResponse'
+              examples:
+                ListTargetsByRule200Example:
+                  summary: Default ListTargetsByRule 200 response
+                  x-microcks-default: true
+                  value:
+                    Targets: []
+                    NextToken: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Targets
+      - Targets
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?RemoveTargets:
     post:
       operationId: RemoveTargets
       summary: Amazon EventBridge Remove Targets
       description: Removes the specified targets from the specified rule.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-RemoveTargets'
+      - $ref: '#/components/parameters/X-Amz-Target-RemoveTargets'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/RemoveTargetsRequest'
+            examples:
+              RemoveTargetsRequestExample:
+                summary: Default RemoveTargets request
+                x-microcks-default: true
+                value:
+                  Rule: example
+                  EventBusName: example-name
+                  Ids: []
+                  Force: true
       responses:
         '200':
           description: Successful response
@@ -239,25 +370,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTargetsResponse'
+              examples:
+                RemoveTargets200Example:
+                  summary: Default RemoveTargets 200 response
+                  x-microcks-default: true
+                  value:
+                    FailedEntryCount: 1
+                    FailedEntries: []
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Targets
+      - Targets
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?CreateEventBus:
     post:
       operationId: CreateEventBus
       summary: Amazon EventBridge Create Event Bus
       description: Creates a new event bus within your account.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-CreateEventBus'
+      - $ref: '#/components/parameters/X-Amz-Target-CreateEventBus'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/CreateEventBusRequest'
+            examples:
+              CreateEventBusRequestExample:
+                summary: Default CreateEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventSourceName: example-name
+                  Tags: []
       responses:
         '200':
           description: Successful response
@@ -265,12 +414,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEventBusResponse'
+              examples:
+                CreateEventBus200Example:
+                  summary: Default CreateEventBus 200 response
+                  x-microcks-default: true
+                  value:
+                    EventBusArn: arn:aws:service:us-east-1:123456789012:resource/example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Event Buses
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?DescribeEventBus:
     post:
       operationId: DescribeEventBus
@@ -279,13 +437,19 @@ paths:
         Displays details about an event bus in your account, including the
         default event bus.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-DescribeEventBus'
+      - $ref: '#/components/parameters/X-Amz-Target-DescribeEventBus'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/DescribeEventBusRequest'
+            examples:
+              DescribeEventBusRequestExample:
+                summary: Default DescribeEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
       responses:
         '200':
           description: Successful response
@@ -293,25 +457,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEventBusResponse'
+              examples:
+                DescribeEventBus200Example:
+                  summary: Default DescribeEventBus 200 response
+                  x-microcks-default: true
+                  value:
+                    Name: example-name
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    Policy: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Event Buses
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?ListEventBuses:
     post:
       operationId: ListEventBuses
       summary: Amazon EventBridge List Event Buses
       description: Lists all the event buses in your account, including the default event bus.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-ListEventBuses'
+      - $ref: '#/components/parameters/X-Amz-Target-ListEventBuses'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/ListEventBusesRequest'
+            examples:
+              ListEventBusesRequestExample:
+                summary: Default ListEventBuses request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  NextToken: example
+                  Limit: 1
       responses:
         '200':
           description: Successful response
@@ -319,12 +502,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListEventBusesResponse'
+              examples:
+                ListEventBuses200Example:
+                  summary: Default ListEventBuses 200 response
+                  x-microcks-default: true
+                  value:
+                    EventBuses: []
+                    NextToken: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Event Buses
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?DeleteEventBus:
     post:
       operationId: DeleteEventBus
@@ -333,13 +526,19 @@ paths:
         Deletes the specified custom event bus or partner event bus. The default
         event bus cannot be deleted.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-DeleteEventBus'
+      - $ref: '#/components/parameters/X-Amz-Target-DeleteEventBus'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/DeleteEventBusRequest'
+            examples:
+              DeleteEventBusRequestExample:
+                summary: Default DeleteEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
       responses:
         '200':
           description: Successful response
@@ -348,20 +547,33 @@ paths:
         '500':
           description: Internal server error
       tags:
-        - Event Buses
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?CreateArchive:
     post:
       operationId: CreateArchive
       summary: Amazon EventBridge Create Archive
       description: Creates an archive of events with the specified settings.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-CreateArchive'
+      - $ref: '#/components/parameters/X-Amz-Target-CreateArchive'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/CreateArchiveRequest'
+            examples:
+              CreateArchiveRequestExample:
+                summary: Default CreateArchive request
+                x-microcks-default: true
+                value:
+                  ArchiveName: example-name
+                  EventSourceArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  Description: Example description
+                  EventPattern: example
+                  RetentionDays: 1
       responses:
         '200':
           description: Successful response
@@ -369,25 +581,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateArchiveResponse'
+              examples:
+                CreateArchive200Example:
+                  summary: Default CreateArchive 200 response
+                  x-microcks-default: true
+                  value:
+                    ArchiveArn: arn:aws:service:us-east-1:123456789012:resource/example
+                    State: example
+                    CreationTime: '2025-01-15T00:00:00Z'
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Archives
+      - Archives
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /?ListArchives:
     post:
       operationId: ListArchives
       summary: Amazon EventBridge List Archives
       description: Lists your archives.
       parameters:
-        - $ref: '#/components/parameters/X-Amz-Target-ListArchives'
+      - $ref: '#/components/parameters/X-Amz-Target-ListArchives'
       requestBody:
         required: true
         content:
           application/x-amz-json-1.1:
             schema:
               $ref: '#/components/schemas/ListArchivesRequest'
+            examples:
+              ListArchivesRequestExample:
+                summary: Default ListArchives request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  EventSourceArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  State: example
+                  NextToken: example
+                  Limit: 1
       responses:
         '200':
           description: Successful response
@@ -395,12 +628,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListArchivesResponse'
+              examples:
+                ListArchives200Example:
+                  summary: Default ListArchives 200 response
+                  x-microcks-default: true
+                  value:
+                    Archives: []
+                    NextToken: example
         '400':
           description: Bad request
         '500':
           description: Internal server error
       tags:
-        - Archives
+      - Archives
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   parameters:
     X-Amz-Target-PutEvents:
@@ -410,7 +653,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.PutEvents
+        - AWSEvents.PutEvents
     X-Amz-Target-PutRule:
       name: X-Amz-Target
       in: header
@@ -418,7 +661,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.PutRule
+        - AWSEvents.PutRule
     X-Amz-Target-DescribeRule:
       name: X-Amz-Target
       in: header
@@ -426,7 +669,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.DescribeRule
+        - AWSEvents.DescribeRule
     X-Amz-Target-ListRules:
       name: X-Amz-Target
       in: header
@@ -434,7 +677,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.ListRules
+        - AWSEvents.ListRules
     X-Amz-Target-DeleteRule:
       name: X-Amz-Target
       in: header
@@ -442,7 +685,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.DeleteRule
+        - AWSEvents.DeleteRule
     X-Amz-Target-PutTargets:
       name: X-Amz-Target
       in: header
@@ -450,7 +693,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.PutTargets
+        - AWSEvents.PutTargets
     X-Amz-Target-ListTargetsByRule:
       name: X-Amz-Target
       in: header
@@ -458,7 +701,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.ListTargetsByRule
+        - AWSEvents.ListTargetsByRule
     X-Amz-Target-RemoveTargets:
       name: X-Amz-Target
       in: header
@@ -466,7 +709,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.RemoveTargets
+        - AWSEvents.RemoveTargets
     X-Amz-Target-CreateEventBus:
       name: X-Amz-Target
       in: header
@@ -474,7 +717,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.CreateEventBus
+        - AWSEvents.CreateEventBus
     X-Amz-Target-DescribeEventBus:
       name: X-Amz-Target
       in: header
@@ -482,7 +725,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.DescribeEventBus
+        - AWSEvents.DescribeEventBus
     X-Amz-Target-ListEventBuses:
       name: X-Amz-Target
       in: header
@@ -490,7 +733,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.ListEventBuses
+        - AWSEvents.ListEventBuses
     X-Amz-Target-DeleteEventBus:
       name: X-Amz-Target
       in: header
@@ -498,7 +741,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.DeleteEventBus
+        - AWSEvents.DeleteEventBus
     X-Amz-Target-CreateArchive:
       name: X-Amz-Target
       in: header
@@ -506,7 +749,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.CreateArchive
+        - AWSEvents.CreateArchive
     X-Amz-Target-ListArchives:
       name: X-Amz-Target
       in: header
@@ -514,7 +757,7 @@ components:
       schema:
         type: string
         enum:
-          - AWSEvents.ListArchives
+        - AWSEvents.ListArchives
   schemas:
     Event:
       type: object
@@ -544,9 +787,9 @@ components:
           type: string
           description: An AWS X-Ray trace header for tracing the event.
       required:
-        - Source
-        - DetailType
-        - Detail
+      - Source
+      - DetailType
+      - Detail
     Rule:
       type: object
       properties:
@@ -562,8 +805,8 @@ components:
         State:
           type: string
           enum:
-            - ENABLED
-            - DISABLED
+          - ENABLED
+          - DISABLED
           description: The state of the rule.
         Description:
           type: string
@@ -606,8 +849,8 @@ components:
               type: string
           description: Settings to transform input before sending to the target.
       required:
-        - Id
-        - Arn
+      - Id
+      - Arn
     EventBus:
       type: object
       properties:
@@ -629,7 +872,7 @@ components:
             $ref: '#/components/schemas/Event'
           description: The entry that defines an event in your system.
       required:
-        - Entries
+      - Entries
     PutEventsResponse:
       type: object
       properties:
@@ -661,8 +904,8 @@ components:
         State:
           type: string
           enum:
-            - ENABLED
-            - DISABLED
+          - ENABLED
+          - DISABLED
         RoleArn:
           type: string
         EventBusName:
@@ -677,7 +920,7 @@ components:
               Value:
                 type: string
       required:
-        - Name
+      - Name
     PutRuleResponse:
       type: object
       properties:
@@ -691,7 +934,7 @@ components:
         EventBusName:
           type: string
       required:
-        - Name
+      - Name
     DescribeRuleResponse:
       type: object
       properties:
@@ -741,7 +984,7 @@ components:
         Force:
           type: boolean
       required:
-        - Name
+      - Name
     PutTargetsRequest:
       type: object
       properties:
@@ -754,8 +997,8 @@ components:
           items:
             $ref: '#/components/schemas/Target'
       required:
-        - Rule
-        - Targets
+      - Rule
+      - Targets
     PutTargetsResponse:
       type: object
       properties:
@@ -784,7 +1027,7 @@ components:
         Limit:
           type: integer
       required:
-        - Rule
+      - Rule
     ListTargetsByRuleResponse:
       type: object
       properties:
@@ -808,8 +1051,8 @@ components:
         Force:
           type: boolean
       required:
-        - Rule
-        - Ids
+      - Rule
+      - Ids
     RemoveTargetsResponse:
       type: object
       properties:
@@ -843,7 +1086,7 @@ components:
               Value:
                 type: string
       required:
-        - Name
+      - Name
     CreateEventBusResponse:
       type: object
       properties:
@@ -887,7 +1130,7 @@ components:
         Name:
           type: string
       required:
-        - Name
+      - Name
     CreateArchiveRequest:
       type: object
       properties:
@@ -902,8 +1145,8 @@ components:
         RetentionDays:
           type: integer
       required:
-        - ArchiveName
-        - EventSourceArn
+      - ArchiveName
+      - EventSourceArn
     CreateArchiveResponse:
       type: object
       properties:
@@ -959,15 +1202,15 @@ components:
       in: header
       description: AWS Signature Version 4 authentication.
 security:
-  - aws_sigv4: []
+- aws_sigv4: []
 tags:
-  - name: Archives
-    description: Operations for managing event archives.
-  - name: Event Buses
-    description: Operations for managing event buses.
-  - name: Events
-    description: Operations for putting events to EventBridge.
-  - name: Rules
-    description: Operations for managing EventBridge rules.
-  - name: Targets
-    description: Operations for managing rule targets.
+- name: Archives
+  description: Operations for managing event archives.
+- name: Event Buses
+  description: Operations for managing event buses.
+- name: Events
+  description: Operations for putting events to EventBridge.
+- name: Rules
+  description: Operations for managing EventBridge rules.
+- name: Targets
+  description: Operations for managing rule targets.

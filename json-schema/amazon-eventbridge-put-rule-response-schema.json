@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-put-rule-response-schema.json",
+  "title": "PutRuleResponse",
+  "description": "PutRuleResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "RuleArn": {
+      "type": "string"
+    }
+  }
+}

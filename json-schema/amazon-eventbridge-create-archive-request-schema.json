@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-create-archive-request-schema.json",
+  "title": "CreateArchiveRequest",
+  "description": "CreateArchiveRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "ArchiveName": {
+      "type": "string"
+    },
+    "EventSourceArn": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "EventPattern": {
+      "type": "string"
+    },
+    "RetentionDays": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ArchiveName",
+    "EventSourceArn"
+  ]
+}

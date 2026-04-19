@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-rule-structure.json",
+  "name": "Rule",
+  "description": "Rule schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "The name of the rule."
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the rule."
+    },
+    "EventPattern": {
+      "type": "string",
+      "description": "The event pattern of the rule."
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "description": "The state of the rule."
+    },
+    "Description": {
+      "type": "string",
+      "description": "The description of the rule."
+    },
+    "ScheduleExpression": {
+      "type": "string",
+      "description": "The scheduling expression (e.g., cron or rate expression)."
+    },
+    "RoleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role."
+    },
+    "EventBusName": {
+      "type": "string",
+      "description": "The name or ARN of the event bus associated with the rule."
+    }
+  }
+}

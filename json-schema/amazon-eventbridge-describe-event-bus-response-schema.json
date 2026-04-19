@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-describe-event-bus-response-schema.json",
+  "title": "DescribeEventBusResponse",
+  "description": "DescribeEventBusResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "Policy": {
+      "type": "string"
+    }
+  }
+}

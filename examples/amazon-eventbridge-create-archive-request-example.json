@@ -1,0 +1,7 @@
+{
+  "ArchiveName": "example-value",
+  "EventSourceArn": "example-value",
+  "Description": "example-value",
+  "EventPattern": "example-value",
+  "RetentionDays": 91
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-list-rules-response-structure.json",
+  "name": "ListRulesResponse",
+  "description": "ListRulesResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Rule"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

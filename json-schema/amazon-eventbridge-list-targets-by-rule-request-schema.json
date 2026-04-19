@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-list-targets-by-rule-request-schema.json",
+  "title": "ListTargetsByRuleRequest",
+  "description": "ListTargetsByRuleRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Rule": {
+      "type": "string"
+    },
+    "EventBusName": {
+      "type": "string"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "Limit": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "Rule"
+  ]
+}

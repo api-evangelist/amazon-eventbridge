@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-create-event-bus-request-schema.json",
+  "title": "CreateEventBusRequest",
+  "description": "CreateEventBusRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "EventSourceName": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Key": {
+            "type": "string"
+          },
+          "Value": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "Name"
+  ]
+}

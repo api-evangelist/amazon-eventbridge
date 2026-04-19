@@ -1,0 +1,157 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon EventBridge
+  description: Unified vocabulary and taxonomy for Amazon EventBridge APIs and capabilities
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon EventBridge API
+    namespace: eventbridge
+    version: '2015-10-07'
+    baseUrl: https://events.{region}.amazonaws.com
+    status: active
+  resources:
+  - name: Events
+    api: Amazon EventBridge
+    actions:
+    - POST
+  - name: Rules
+    api: Amazon EventBridge
+    actions:
+    - POST
+  - name: Targets
+    api: Amazon EventBridge
+    actions:
+    - POST
+  - name: Event Buses
+    api: Amazon EventBridge
+    actions:
+    - POST
+  - name: Archives
+    api: Amazon EventBridge
+    actions:
+    - POST
+  actions:
+  - verb: put
+    httpMethod: POST
+    pattern: write
+  - verb: describe
+    httpMethod: POST
+    pattern: write
+  - verb: list
+    httpMethod: POST
+    pattern: write
+  - verb: delete
+    httpMethod: POST
+    pattern: write
+  - verb: remove
+    httpMethod: POST
+    pattern: write
+  - verb: create
+    httpMethod: POST
+    pattern: write
+  schemas:
+    core:
+    - name: Event
+      description: Event object
+    - name: Rule
+      description: Rule object
+    - name: Target
+      description: Target object
+    - name: EventBus
+      description: EventBus object
+    - name: PutEventsRequest
+      description: PutEventsRequest object
+    - name: PutEventsResponse
+      description: PutEventsResponse object
+    - name: PutRuleRequest
+      description: PutRuleRequest object
+    - name: PutRuleResponse
+      description: PutRuleResponse object
+    - name: DescribeRuleRequest
+      description: DescribeRuleRequest object
+    - name: DescribeRuleResponse
+      description: DescribeRuleResponse object
+  parameters:
+    pagination:
+    - name: MaxResults
+      description: Maximum number of results to return
+    - name: NextToken
+      description: Pagination token for next page of results
+    identifiers:
+    - name: Id
+      description: Resource identifier
+    - name: Arn
+      description: Amazon Resource Name
+  enums:
+    states:
+    - Active
+    - Inactive
+    - Pending
+    - Terminated
+  authentication:
+  - name: aws_sigv4
+    type: apiKey
+capability:
+  workflows:
+  - name: Amazon EventBridge Management
+    file: capabilities/amazon-eventbridge-capability.yaml
+    description: Unified capability for managing Amazon EventBridge resources. Combines Amazon EventBridge APIs for Integration Engineer workflows in Event-Driven Architecture.
+    toolCount: 14
+  personas:
+  - id: developer
+    name: Application Developer
+    description: Developers building applications using Amazon EventBridge
+  - id: operator
+    name: Cloud Operator
+    description: Operations teams managing Amazon EventBridge infrastructure
+  domains:
+  - name: Amazon EventBridge
+    description: Serverless event bus for connecting applications with real-time data
+  namespaces:
+  - type: consumed
+    namespace: eventbridge
+  - type: rest
+    namespace: amazon-eventbridge-api
+  - type: mcp
+    namespace: amazon-eventbridge-mcp
+  binds:
+  - AWS_API_KEY
+  - AWS_REGION
+crossReference:
+- resource: Events
+  operations:
+  - put
+  - describe
+  - list
+  workflows:
+  - Amazon EventBridge Management
+- resource: Rules
+  operations:
+  - put
+  - describe
+  - list
+  workflows:
+  - Amazon EventBridge Management
+- resource: Targets
+  operations:
+  - put
+  - describe
+  - list
+  workflows:
+  - Amazon EventBridge Management
+- resource: Event Buses
+  operations:
+  - put
+  - describe
+  - list
+  workflows:
+  - Amazon EventBridge Management
+- resource: Archives
+  operations:
+  - put
+  - describe
+  - list
+  workflows:
+  - Amazon EventBridge Management

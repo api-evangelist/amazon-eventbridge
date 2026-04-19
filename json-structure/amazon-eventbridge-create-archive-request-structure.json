@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-create-archive-request-structure.json",
+  "name": "CreateArchiveRequest",
+  "description": "CreateArchiveRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "ArchiveName": {
+      "type": "string"
+    },
+    "EventSourceArn": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "EventPattern": {
+      "type": "string"
+    },
+    "RetentionDays": {
+      "type": "int32"
+    }
+  },
+  "required": [
+    "ArchiveName",
+    "EventSourceArn"
+  ]
+}

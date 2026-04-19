@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-put-events-response-schema.json",
+  "title": "PutEventsResponse",
+  "description": "PutEventsResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "FailedEntryCount": {
+      "type": "integer",
+      "description": "The number of failed entries."
+    },
+    "Entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "EventId": {
+            "type": "string"
+          },
+          "ErrorCode": {
+            "type": "string"
+          },
+          "ErrorMessage": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

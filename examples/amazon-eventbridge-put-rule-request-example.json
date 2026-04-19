@@ -1,0 +1,15 @@
+{
+  "Name": "example-value",
+  "Description": "example-value",
+  "EventPattern": "example-value",
+  "ScheduleExpression": "example-value",
+  "State": "ENABLED",
+  "RoleArn": "example-value",
+  "EventBusName": "example-value",
+  "Tags": [
+    {
+      "Key": "example-value",
+      "Value": "example-value"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "NamePrefix": "example-value",
+  "EventSourceArn": "example-value",
+  "State": "example-value",
+  "NextToken": "example-value",
+  "Limit": 28
+}

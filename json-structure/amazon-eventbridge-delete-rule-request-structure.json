@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-delete-rule-request-structure.json",
+  "name": "DeleteRuleRequest",
+  "description": "DeleteRuleRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "EventBusName": {
+      "type": "string"
+    },
+    "Force": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "Name"
+  ]
+}

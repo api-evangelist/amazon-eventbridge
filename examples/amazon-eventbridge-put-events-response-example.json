@@ -1,0 +1,10 @@
+{
+  "FailedEntryCount": 84,
+  "Entries": [
+    {
+      "EventId": "example-value",
+      "ErrorCode": "example-value",
+      "ErrorMessage": "example-value"
+    }
+  ]
+}

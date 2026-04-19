@@ -1,0 +1,14 @@
+{
+  "Archives": [
+    {
+      "ArchiveName": "example-value",
+      "EventSourceArn": "example-value",
+      "State": "example-value",
+      "RetentionDays": 29,
+      "SizeBytes": 36,
+      "EventCount": 91,
+      "CreationTime": "2025-01-15T00:00:00Z"
+    }
+  ],
+  "NextToken": "example-value"
+}

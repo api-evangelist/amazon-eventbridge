@@ -1,0 +1,10 @@
+{
+  "FailedEntryCount": 16,
+  "FailedEntries": [
+    {
+      "TargetId": "example-value",
+      "ErrorCode": "example-value",
+      "ErrorMessage": "example-value"
+    }
+  ]
+}

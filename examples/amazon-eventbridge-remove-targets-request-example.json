@@ -1,0 +1,8 @@
+{
+  "Rule": "example-value",
+  "EventBusName": "example-value",
+  "Ids": [
+    "example-value"
+  ],
+  "Force": true
+}

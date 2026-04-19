@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-remove-targets-response-schema.json",
+  "title": "RemoveTargetsResponse",
+  "description": "RemoveTargetsResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "FailedEntryCount": {
+      "type": "integer"
+    },
+    "FailedEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "TargetId": {
+            "type": "string"
+          },
+          "ErrorCode": {
+            "type": "string"
+          },
+          "ErrorMessage": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

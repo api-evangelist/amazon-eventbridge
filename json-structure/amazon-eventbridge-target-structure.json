@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-target-structure.json",
+  "name": "Target",
+  "description": "Target schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The ID of the target."
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the target."
+    },
+    "RoleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role."
+    },
+    "Input": {
+      "type": "string",
+      "description": "Valid JSON text passed to the target."
+    },
+    "InputPath": {
+      "type": "string",
+      "description": "JSONPath to extract from the event and send to the target."
+    },
+    "InputTransformer": {
+      "type": "object",
+      "properties": {
+        "InputPathsMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "InputTemplate": {
+          "type": "string"
+        }
+      },
+      "description": "Settings to transform input before sending to the target."
+    }
+  },
+  "required": [
+    "Id",
+    "Arn"
+  ]
+}

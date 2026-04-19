@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-list-archives-request-structure.json",
+  "name": "ListArchivesRequest",
+  "description": "ListArchivesRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "NamePrefix": {
+      "type": "string"
+    },
+    "EventSourceArn": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "Limit": {
+      "type": "int32"
+    }
+  }
+}

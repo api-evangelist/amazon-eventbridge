@@ -1,0 +1,10 @@
+{
+  "Name": "example-value",
+  "EventSourceName": "example-value",
+  "Tags": [
+    {
+      "Key": "example-value",
+      "Value": "example-value"
+    }
+  ]
+}

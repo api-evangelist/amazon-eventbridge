@@ -1,0 +1,475 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: EventBridge
+  description: Serverless event bus connecting applications with real-time data
+  tags:
+  - Amazon Web Services
+  - Event Bus
+  - Serverless
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_API_KEY: AWS_API_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - type: http
+    namespace: api
+    baseUri: https://events.{region}.amazonaws.com
+    description: Serverless event bus connecting applications with real-time data
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_API_KEY}}'
+      placement: header
+    resources:
+    - name: Events
+      path: /events
+      description: Events resources
+      operations:
+      - name: PutEvents
+        method: POST
+        description: Amazon EventBridge Put Events
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Rules
+      path: /rules
+      description: Rules resources
+      operations:
+      - name: PutRule
+        method: POST
+        description: Amazon EventBridge Put Rule
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: DescribeRule
+        method: POST
+        description: Amazon EventBridge Describe Rule
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListRules
+        method: POST
+        description: Amazon EventBridge List Rules
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: DeleteRule
+        method: POST
+        description: Amazon EventBridge Delete Rule
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Targets
+      path: /targets
+      description: Targets resources
+      operations:
+      - name: PutTargets
+        method: POST
+        description: Amazon EventBridge Put Targets
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListTargetsByRule
+        method: POST
+        description: Amazon EventBridge List Targets by Rule
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: RemoveTargets
+        method: POST
+        description: Amazon EventBridge Remove Targets
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Event Buses
+      path: /event-buses
+      description: Event Buses resources
+      operations:
+      - name: CreateEventBus
+        method: POST
+        description: Amazon EventBridge Create Event Bus
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: DescribeEventBus
+        method: POST
+        description: Amazon EventBridge Describe Event Bus
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListEventBuses
+        method: POST
+        description: Amazon EventBridge List Event Buses
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: DeleteEventBus
+        method: POST
+        description: Amazon EventBridge Delete Event Bus
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Archives
+      path: /archives
+      description: Archives resources
+      operations:
+      - name: CreateArchive
+        method: POST
+        description: Amazon EventBridge Create Archive
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: ListArchives
+        method: POST
+        description: Amazon EventBridge List Archives
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8096
+    namespace: api-api
+    resources:
+    - path: /v1/PutEvents
+      name: PutEvents
+      description: Amazon EventBridge Put Events
+      operations:
+      - method: POST
+        name: PutEvents
+        description: Amazon EventBridge Put Events
+        call: api.PutEvents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/PutRule
+      name: PutRule
+      description: Amazon EventBridge Put Rule
+      operations:
+      - method: POST
+        name: PutRule
+        description: Amazon EventBridge Put Rule
+        call: api.PutRule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/DescribeRule
+      name: DescribeRule
+      description: Amazon EventBridge Describe Rule
+      operations:
+      - method: POST
+        name: DescribeRule
+        description: Amazon EventBridge Describe Rule
+        call: api.DescribeRule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ListRules
+      name: ListRules
+      description: Amazon EventBridge List Rules
+      operations:
+      - method: POST
+        name: ListRules
+        description: Amazon EventBridge List Rules
+        call: api.ListRules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/DeleteRule
+      name: DeleteRule
+      description: Amazon EventBridge Delete Rule
+      operations:
+      - method: POST
+        name: DeleteRule
+        description: Amazon EventBridge Delete Rule
+        call: api.DeleteRule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/PutTargets
+      name: PutTargets
+      description: Amazon EventBridge Put Targets
+      operations:
+      - method: POST
+        name: PutTargets
+        description: Amazon EventBridge Put Targets
+        call: api.PutTargets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ListTargetsByRule
+      name: ListTargetsByRule
+      description: Amazon EventBridge List Targets by Rule
+      operations:
+      - method: POST
+        name: ListTargetsByRule
+        description: Amazon EventBridge List Targets by Rule
+        call: api.ListTargetsByRule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/RemoveTargets
+      name: RemoveTargets
+      description: Amazon EventBridge Remove Targets
+      operations:
+      - method: POST
+        name: RemoveTargets
+        description: Amazon EventBridge Remove Targets
+        call: api.RemoveTargets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/CreateEventBus
+      name: CreateEventBus
+      description: Amazon EventBridge Create Event Bus
+      operations:
+      - method: POST
+        name: CreateEventBus
+        description: Amazon EventBridge Create Event Bus
+        call: api.CreateEventBus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/DescribeEventBus
+      name: DescribeEventBus
+      description: Amazon EventBridge Describe Event Bus
+      operations:
+      - method: POST
+        name: DescribeEventBus
+        description: Amazon EventBridge Describe Event Bus
+        call: api.DescribeEventBus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9106
+    namespace: api-mcp
+    transport: http
+    tools:
+    - name: PutEvents
+      description: Amazon EventBridge Put Events
+      hints:
+        readOnly: false
+      call: api.PutEvents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: PutRule
+      description: Amazon EventBridge Put Rule
+      hints:
+        readOnly: false
+      call: api.PutRule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: DescribeRule
+      description: Amazon EventBridge Describe Rule
+      hints:
+        readOnly: false
+      call: api.DescribeRule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ListRules
+      description: Amazon EventBridge List Rules
+      hints:
+        readOnly: false
+      call: api.ListRules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: DeleteRule
+      description: Amazon EventBridge Delete Rule
+      hints:
+        readOnly: false
+      call: api.DeleteRule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: PutTargets
+      description: Amazon EventBridge Put Targets
+      hints:
+        readOnly: false
+      call: api.PutTargets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ListTargetsByRule
+      description: Amazon EventBridge List Targets by Rule
+      hints:
+        readOnly: false
+      call: api.ListTargetsByRule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: RemoveTargets
+      description: Amazon EventBridge Remove Targets
+      hints:
+        readOnly: false
+      call: api.RemoveTargets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: CreateEventBus
+      description: Amazon EventBridge Create Event Bus
+      hints:
+        readOnly: false
+      call: api.CreateEventBus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: DescribeEventBus
+      description: Amazon EventBridge Describe Event Bus
+      hints:
+        readOnly: false
+      call: api.DescribeEventBus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ListEventBuses
+      description: Amazon EventBridge List Event Buses
+      hints:
+        readOnly: false
+      call: api.ListEventBuses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: DeleteEventBus
+      description: Amazon EventBridge Delete Event Bus
+      hints:
+        readOnly: false
+      call: api.DeleteEventBus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: CreateArchive
+      description: Amazon EventBridge Create Archive
+      hints:
+        readOnly: false
+      call: api.CreateArchive
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ListArchives
+      description: Amazon EventBridge List Archives
+      hints:
+        readOnly: false
+      call: api.ListArchives
+      outputParameters:
+      - type: object
+        mapping: $.

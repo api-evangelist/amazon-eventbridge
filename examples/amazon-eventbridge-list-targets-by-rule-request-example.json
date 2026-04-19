@@ -1,0 +1,6 @@
+{
+  "Rule": "example-value",
+  "EventBusName": "example-value",
+  "NextToken": "example-value",
+  "Limit": 99
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-put-events-request-schema.json",
+  "title": "PutEventsRequest",
+  "description": "PutEventsRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Event"
+      },
+      "description": "The entry that defines an event in your system."
+    }
+  },
+  "required": [
+    "Entries"
+  ]
+}

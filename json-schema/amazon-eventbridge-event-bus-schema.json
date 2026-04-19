@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-event-bus-schema.json",
+  "title": "EventBus",
+  "description": "EventBus schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "The name of the event bus."
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The ARN of the event bus."
+    },
+    "Policy": {
+      "type": "string",
+      "description": "The permissions policy of the event bus."
+    }
+  }
+}

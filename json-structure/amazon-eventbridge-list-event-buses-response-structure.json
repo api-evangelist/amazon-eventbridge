@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-list-event-buses-response-structure.json",
+  "name": "ListEventBusesResponse",
+  "description": "ListEventBusesResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "EventBuses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EventBus"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

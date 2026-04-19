@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-put-targets-response-structure.json",
+  "name": "PutTargetsResponse",
+  "description": "PutTargetsResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "FailedEntryCount": {
+      "type": "int32"
+    },
+    "FailedEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "TargetId": {
+            "type": "string"
+          },
+          "ErrorCode": {
+            "type": "string"
+          },
+          "ErrorMessage": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

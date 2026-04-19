@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-describe-rule-response-schema.json",
+  "title": "DescribeRuleResponse",
+  "description": "DescribeRuleResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "EventPattern": {
+      "type": "string"
+    },
+    "ScheduleExpression": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "RoleArn": {
+      "type": "string"
+    },
+    "EventBusName": {
+      "type": "string"
+    }
+  }
+}

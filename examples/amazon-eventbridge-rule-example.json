@@ -1,0 +1,10 @@
+{
+  "Name": "example-value",
+  "Arn": "example-value",
+  "EventPattern": "example-value",
+  "State": "DISABLED",
+  "Description": "example-value",
+  "ScheduleExpression": "example-value",
+  "RoleArn": "example-value",
+  "EventBusName": "example-value"
+}

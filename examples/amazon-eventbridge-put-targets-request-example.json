@@ -1,0 +1,7 @@
+{
+  "Rule": "example-value",
+  "EventBusName": "example-value",
+  "Targets": [
+    {}
+  ]
+}

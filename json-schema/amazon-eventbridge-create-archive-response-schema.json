@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-create-archive-response-schema.json",
+  "title": "CreateArchiveResponse",
+  "description": "CreateArchiveResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "ArchiveArn": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "CreationTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

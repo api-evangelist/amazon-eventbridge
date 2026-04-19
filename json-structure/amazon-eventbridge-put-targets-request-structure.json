@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-put-targets-request-structure.json",
+  "name": "PutTargetsRequest",
+  "description": "PutTargetsRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Rule": {
+      "type": "string"
+    },
+    "EventBusName": {
+      "type": "string"
+    },
+    "Targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Target"
+      }
+    }
+  },
+  "required": [
+    "Rule",
+    "Targets"
+  ]
+}

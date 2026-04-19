@@ -1,0 +1,13 @@
+{
+  "version": "0",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "detail-type": "example-value",
+  "source": "example-value",
+  "account": "example-value",
+  "time": "2025-01-15T00:00:00Z",
+  "region": "example-value",
+  "resources": [
+    "example-value"
+  ],
+  "detail": {}
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-structure/amazon-eventbridge-list-archives-response-structure.json",
+  "name": "ListArchivesResponse",
+  "description": "ListArchivesResponse schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Archives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ArchiveName": {
+            "type": "string"
+          },
+          "EventSourceArn": {
+            "type": "string"
+          },
+          "State": {
+            "type": "string"
+          },
+          "RetentionDays": {
+            "type": "int32"
+          },
+          "SizeBytes": {
+            "type": "int32"
+          },
+          "EventCount": {
+            "type": "int32"
+          },
+          "CreationTime": {
+            "type": "datetime"
+          }
+        }
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

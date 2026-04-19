@@ -1,0 +1,11 @@
+{
+  "Id": "example-value",
+  "Arn": "example-value",
+  "RoleArn": "example-value",
+  "Input": "example-value",
+  "InputPath": "example-value",
+  "InputTransformer": {
+    "InputPathsMap": {},
+    "InputTemplate": "example-value"
+  }
+}

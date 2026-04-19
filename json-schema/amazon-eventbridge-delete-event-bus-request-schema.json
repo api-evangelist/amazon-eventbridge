@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eventbridge/refs/heads/main/json-schema/amazon-eventbridge-delete-event-bus-request-schema.json",
+  "title": "DeleteEventBusRequest",
+  "description": "DeleteEventBusRequest schema from Amazon EventBridge API",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "Name"
+  ]
+}
