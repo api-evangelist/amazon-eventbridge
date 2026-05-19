@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EventBridge API — Event Buses
+  description: 'Amazon EventBridge API — Event Buses. 4 operations. Lead operation: Amazon EventBridge Create Event Bus. Self-contained
+    Naftiko capability covering one Amazon Eventbridge business surface.'
+  tags:
+  - Amazon Eventbridge
+  - Event Buses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EVENTBRIDGE_API_KEY: AMAZON_EVENTBRIDGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-eventbridge-event-buses
+    baseUri: https://events.{region}.amazonaws.com
+    description: Amazon EventBridge API — Event Buses business capability. Self-contained, no shared references.
+    resources:
+    - name: ?CreateEventBus
+      path: /?CreateEventBus
+      operations:
+      - name: createeventbus
+        method: POST
+        description: Amazon EventBridge Create Event Bus
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ?DeleteEventBus
+      path: /?DeleteEventBus
+      operations:
+      - name: deleteeventbus
+        method: POST
+        description: Amazon EventBridge Delete Event Bus
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ?DescribeEventBus
+      path: /?DescribeEventBus
+      operations:
+      - name: describeeventbus
+        method: POST
+        description: Amazon EventBridge Describe Event Bus
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ?ListEventBuses
+      path: /?ListEventBuses
+      operations:
+      - name: listeventbuses
+        method: POST
+        description: Amazon EventBridge List Event Buses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_EVENTBRIDGE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-eventbridge-event-buses-rest
+    port: 8080
+    description: REST adapter for Amazon EventBridge API — Event Buses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/createeventbus
+      name: createeventbus
+      description: REST surface for ?CreateEventBus.
+      operations:
+      - method: POST
+        name: createeventbus
+        description: Amazon EventBridge Create Event Bus
+        call: amazon-eventbridge-event-buses.createeventbus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deleteeventbus
+      name: deleteeventbus
+      description: REST surface for ?DeleteEventBus.
+      operations:
+      - method: POST
+        name: deleteeventbus
+        description: Amazon EventBridge Delete Event Bus
+        call: amazon-eventbridge-event-buses.deleteeventbus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describeeventbus
+      name: describeeventbus
+      description: REST surface for ?DescribeEventBus.
+      operations:
+      - method: POST
+        name: describeeventbus
+        description: Amazon EventBridge Describe Event Bus
+        call: amazon-eventbridge-event-buses.describeeventbus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/listeventbuses
+      name: listeventbuses
+      description: REST surface for ?ListEventBuses.
+      operations:
+      - method: POST
+        name: listeventbuses
+        description: Amazon EventBridge List Event Buses
+        call: amazon-eventbridge-event-buses.listeventbuses
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-eventbridge-event-buses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EventBridge API — Event Buses. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: amazon-eventbridge-create-event-bus
+      description: Amazon EventBridge Create Event Bus
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-event-buses.createeventbus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eventbridge-delete-event-bus
+      description: Amazon EventBridge Delete Event Bus
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-event-buses.deleteeventbus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eventbridge-describe-event-bus
+      description: Amazon EventBridge Describe Event Bus
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-event-buses.describeeventbus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eventbridge-list-event-buses
+      description: Amazon EventBridge List Event Buses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-event-buses.listeventbuses
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

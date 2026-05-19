@@ -1,10 +1,11 @@
 name: Amazon EventBridge
-description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data 
-  from your own applications, SaaS applications, and AWS services and routes that data to targets such as Lambda, SNS, SQS, and more.
+description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data
+  from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications,
+  and AWS services and routes that data to targets such as Lambda, SNS, SQS, and more.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/eventbridge/
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 tags:
 - Amazon Web Services
@@ -16,7 +17,8 @@ tags:
 - Serverless
 apis:
 - name: Amazon EventBridge API
-  description: API for creating and managing event buses, rules, targets, and connections for routing events across applications, microservices, and SaaS integrations.
+  description: API for creating and managing event buses, rules, targets, and connections for routing events across applications,
+    microservices, and SaaS integrations.
   humanURL: https://aws.amazon.com/eventbridge/
   baseURL: https://events.amazonaws.com
   tags:
@@ -47,6 +49,16 @@ apis:
     url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-eventbridge-context.jsonld
+  - type: NaftikoCapability
+    url: capabilities/amazon-eventbridge-archives.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-eventbridge-event-buses.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-eventbridge-events.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-eventbridge-rules.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-eventbridge-targets.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/
@@ -88,10 +100,6 @@ common:
   url: https://aws.amazon.com/contact-us/
 - type: SpectralRules
   url: rules/amazon-eventbridge-spectral-rules.yml
-- type: NaftikoCapability
-  url: capabilities/amazon-eventbridge-capability.yaml
-- type: NaftikoCapability
-  url: capabilities/shared/api.yaml
 - type: Vocabulary
   url: vocabulary/amazon-eventbridge-vocabulary.yaml
 - type: Features

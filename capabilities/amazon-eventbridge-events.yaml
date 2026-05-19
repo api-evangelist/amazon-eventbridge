@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EventBridge API — Events
+  description: 'Amazon EventBridge API — Events. 1 operations. Lead operation: Amazon EventBridge Put Events. Self-contained
+    Naftiko capability covering one Amazon Eventbridge business surface.'
+  tags:
+  - Amazon Eventbridge
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EVENTBRIDGE_API_KEY: AMAZON_EVENTBRIDGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-eventbridge-events
+    baseUri: https://events.{region}.amazonaws.com
+    description: Amazon EventBridge API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: putevents
+        method: POST
+        description: Amazon EventBridge Put Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_EVENTBRIDGE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-eventbridge-events-rest
+    port: 8080
+    description: REST adapter for Amazon EventBridge API — Events. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: POST
+        name: putevents
+        description: Amazon EventBridge Put Events
+        call: amazon-eventbridge-events.putevents
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-eventbridge-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EventBridge API — Events. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: amazon-eventbridge-put-events
+      description: Amazon EventBridge Put Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-events.putevents
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

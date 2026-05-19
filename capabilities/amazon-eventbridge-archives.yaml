@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EventBridge API — Archives
+  description: 'Amazon EventBridge API — Archives. 2 operations. Lead operation: Amazon EventBridge Create Archive. Self-contained
+    Naftiko capability covering one Amazon Eventbridge business surface.'
+  tags:
+  - Amazon Eventbridge
+  - Archives
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EVENTBRIDGE_API_KEY: AMAZON_EVENTBRIDGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-eventbridge-archives
+    baseUri: https://events.{region}.amazonaws.com
+    description: Amazon EventBridge API — Archives business capability. Self-contained, no shared references.
+    resources:
+    - name: ?CreateArchive
+      path: /?CreateArchive
+      operations:
+      - name: createarchive
+        method: POST
+        description: Amazon EventBridge Create Archive
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ?ListArchives
+      path: /?ListArchives
+      operations:
+      - name: listarchives
+        method: POST
+        description: Amazon EventBridge List Archives
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_EVENTBRIDGE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-eventbridge-archives-rest
+    port: 8080
+    description: REST adapter for Amazon EventBridge API — Archives. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/createarchive
+      name: createarchive
+      description: REST surface for ?CreateArchive.
+      operations:
+      - method: POST
+        name: createarchive
+        description: Amazon EventBridge Create Archive
+        call: amazon-eventbridge-archives.createarchive
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/listarchives
+      name: listarchives
+      description: REST surface for ?ListArchives.
+      operations:
+      - method: POST
+        name: listarchives
+        description: Amazon EventBridge List Archives
+        call: amazon-eventbridge-archives.listarchives
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-eventbridge-archives-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EventBridge API — Archives. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: amazon-eventbridge-create-archive
+      description: Amazon EventBridge Create Archive
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-archives.createarchive
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eventbridge-list-archives
+      description: Amazon EventBridge List Archives
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-eventbridge-archives.listarchives
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
