@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Teardown Event Bus
+  summary: Inspect a bus's rules, delete a rule, then delete the custom event bus.
+  description: >-
+    Decommissions a custom event bus in the correct order: it lists the rules on
+    the bus for visibility, deletes the named rule, and then deletes the event
+    bus itself. The default event bus cannot be deleted, so this targets a custom
+    bus. Every step spells out its AWS JSON request inline — including the
+    documented X-Amz-Target header — so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: teardown-event-bus
+  summary: List rules on a bus, delete a rule, and delete the custom event bus.
+  description: >-
+    Lists the rules associated with a custom event bus, deletes the named rule
+    (forcing removal of any remaining targets), and then deletes the event bus.
+  inputs:
+    type: object
+    required:
+    - eventBusName
+    - ruleName
+    properties:
+      eventBusName:
+        type: string
+        description: The name of the custom event bus to tear down.
+      ruleName:
+        type: string
+        description: The name of the rule on the bus to delete first.
+  steps:
+  - stepId: listRules
+    description: List the rules currently associated with the event bus.
+    operationId: ListRules
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListRules
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rules: $response.body#/Rules
+  - stepId: deleteRule
+    description: Delete the named rule, forcing removal of any remaining targets.
+    operationId: DeleteRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DeleteRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Force: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleDeleteStatus: $statusCode
+  - stepId: deleteEventBus
+    description: Delete the now-empty custom event bus.
+    operationId: DeleteEventBus
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DeleteEventBus
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      busDeleteStatus: $statusCode
+  outputs:
+    rulesBeforeTeardown: $steps.listRules.outputs.rules
+    ruleDeleteStatus: $steps.deleteRule.outputs.ruleDeleteStatus
+    busDeleteStatus: $steps.deleteEventBus.outputs.busDeleteStatus

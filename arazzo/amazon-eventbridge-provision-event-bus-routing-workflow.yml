@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Provision Event Bus Routing
+  summary: Stand up a custom event bus, attach a rule, wire targets, and confirm the wiring.
+  description: >-
+    Provisions an end-to-end routing path on Amazon EventBridge. The workflow
+    creates a custom event bus, adds a rule that matches an event pattern on
+    that bus, attaches one or more targets to the rule, and then reads the
+    targets back to confirm they were registered. Every step spells out its AWS
+    JSON request inline — including the documented X-Amz-Target header — so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-event-bus-routing
+  summary: Create an event bus, add a rule, attach targets, and verify them.
+  description: >-
+    Creates a custom event bus, defines a pattern-matching rule on that bus,
+    attaches the supplied targets to the rule, and then lists the targets back
+    to confirm the routing is in place.
+  inputs:
+    type: object
+    required:
+    - eventBusName
+    - ruleName
+    - eventPattern
+    - targets
+    properties:
+      eventBusName:
+        type: string
+        description: The name of the custom event bus to create.
+      ruleName:
+        type: string
+        description: The name of the rule to create on the event bus.
+      eventPattern:
+        type: string
+        description: The event pattern (JSON string) the rule matches against.
+      ruleDescription:
+        type: string
+        description: An optional human-readable description for the rule.
+      targets:
+        type: array
+        description: The list of Target objects to attach to the rule.
+        items:
+          type: object
+  steps:
+  - stepId: createEventBus
+    description: Create the custom event bus that will host the routing rule.
+    operationId: CreateEventBus
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.CreateEventBus
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventBusArn: $response.body#/EventBusArn
+  - stepId: putRule
+    description: >-
+      Create a rule on the new event bus that matches the supplied event
+      pattern and is enabled immediately.
+    operationId: PutRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        Description: $inputs.ruleDescription
+        EventPattern: $inputs.eventPattern
+        EventBusName: $inputs.eventBusName
+        State: ENABLED
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleArn: $response.body#/RuleArn
+  - stepId: putTargets
+    description: Attach the supplied targets to the rule on the event bus.
+    operationId: PutTargets
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutTargets
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Targets: $inputs.targets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      failedEntryCount: $response.body#/FailedEntryCount
+      failedEntries: $response.body#/FailedEntries
+  - stepId: listTargets
+    description: Read the targets back from the rule to confirm they registered.
+    operationId: ListTargetsByRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListTargetsByRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      registeredTargets: $response.body#/Targets
+  outputs:
+    eventBusArn: $steps.createEventBus.outputs.eventBusArn
+    ruleArn: $steps.putRule.outputs.ruleArn
+    registeredTargets: $steps.listTargets.outputs.registeredTargets

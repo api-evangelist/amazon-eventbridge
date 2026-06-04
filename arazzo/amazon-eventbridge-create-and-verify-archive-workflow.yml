@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Create and Verify Archive
+  summary: Create an event archive, then list archives to confirm it exists.
+  description: >-
+    Creates an archive against an existing event source ARN and then lists the
+    account's archives filtered by the same source to confirm the new archive is
+    present and report its state. Every step spells out its AWS JSON request
+    inline — including the documented X-Amz-Target header — so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-verify-archive
+  summary: Create an archive and confirm it via a filtered archive listing.
+  description: >-
+    Creates an archive for the supplied event source ARN, then lists archives
+    scoped to that source ARN to confirm the archive was created.
+  inputs:
+    type: object
+    required:
+    - archiveName
+    - eventSourceArn
+    properties:
+      archiveName:
+        type: string
+        description: The name of the archive to create.
+      eventSourceArn:
+        type: string
+        description: The ARN of the event source (event bus) to archive from.
+      eventPattern:
+        type: string
+        description: An optional event pattern (JSON string) limiting which events are archived.
+      retentionDays:
+        type: integer
+        description: How many days to retain archived events; 0 retains indefinitely.
+      archiveDescription:
+        type: string
+        description: An optional human-readable description for the archive.
+  steps:
+  - stepId: createArchive
+    description: Create the archive against the supplied event source ARN.
+    operationId: CreateArchive
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.CreateArchive
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        ArchiveName: $inputs.archiveName
+        EventSourceArn: $inputs.eventSourceArn
+        Description: $inputs.archiveDescription
+        EventPattern: $inputs.eventPattern
+        RetentionDays: $inputs.retentionDays
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      archiveArn: $response.body#/ArchiveArn
+      archiveState: $response.body#/State
+  - stepId: listArchives
+    description: List archives for the same event source to confirm the new archive exists.
+    operationId: ListArchives
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListArchives
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        NamePrefix: $inputs.archiveName
+        EventSourceArn: $inputs.eventSourceArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      archives: $response.body#/Archives
+    onSuccess:
+    - name: archivePresent
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.Archives.length > 0
+        type: jsonpath
+  outputs:
+    archiveArn: $steps.createArchive.outputs.archiveArn
+    archiveState: $steps.createArchive.outputs.archiveState
+    archives: $steps.listArchives.outputs.archives

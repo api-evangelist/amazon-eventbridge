@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Archive Event Bus
+  summary: Create a bus, resolve its ARN, then archive matching events from it.
+  description: >-
+    Sets up durable event capture: the workflow creates a custom event bus,
+    describes it to resolve the ARN that an archive must reference as its event
+    source, and then creates an archive that retains matching events from that
+    bus. Every step spells out its AWS JSON request inline — including the
+    documented X-Amz-Target header — so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: archive-event-bus
+  summary: Create an event bus and an archive that captures its events.
+  description: >-
+    Creates a custom event bus, describes it to obtain its ARN, and creates an
+    archive that uses that ARN as its event source so matching events are
+    retained.
+  inputs:
+    type: object
+    required:
+    - eventBusName
+    - archiveName
+    properties:
+      eventBusName:
+        type: string
+        description: The name of the custom event bus to create and archive from.
+      archiveName:
+        type: string
+        description: The name of the archive to create.
+      eventPattern:
+        type: string
+        description: An optional event pattern (JSON string) limiting which events are archived.
+      retentionDays:
+        type: integer
+        description: How many days to retain archived events; 0 retains indefinitely.
+      archiveDescription:
+        type: string
+        description: An optional human-readable description for the archive.
+  steps:
+  - stepId: createEventBus
+    description: Create the custom event bus whose events will be archived.
+    operationId: CreateEventBus
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.CreateEventBus
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventBusArn: $response.body#/EventBusArn
+  - stepId: describeEventBus
+    description: Describe the event bus to resolve the ARN the archive will source from.
+    operationId: DescribeEventBus
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DescribeEventBus
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventSourceArn: $response.body#/Arn
+  - stepId: createArchive
+    description: Create an archive that retains matching events from the event bus.
+    operationId: CreateArchive
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.CreateArchive
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        ArchiveName: $inputs.archiveName
+        EventSourceArn: $steps.describeEventBus.outputs.eventSourceArn
+        Description: $inputs.archiveDescription
+        EventPattern: $inputs.eventPattern
+        RetentionDays: $inputs.retentionDays
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      archiveArn: $response.body#/ArchiveArn
+      archiveState: $response.body#/State
+      creationTime: $response.body#/CreationTime
+  outputs:
+    eventBusArn: $steps.createEventBus.outputs.eventBusArn
+    archiveArn: $steps.createArchive.outputs.archiveArn
+    archiveState: $steps.createArchive.outputs.archiveState

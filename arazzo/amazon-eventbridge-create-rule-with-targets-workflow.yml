@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Create Rule with Targets
+  summary: Create a rule on an existing event bus, attach targets, and verify them.
+  description: >-
+    Defines a new pattern-matching rule on an existing event bus, attaches the
+    supplied targets to it, and reads the targets back to confirm the rule is
+    wired up. Useful for adding routing onto the default or a pre-existing event
+    bus without provisioning a new one. Every step spells out its AWS JSON
+    request inline — including the documented X-Amz-Target header — so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-rule-with-targets
+  summary: Add a rule and its targets to an existing event bus and verify them.
+  description: >-
+    Creates a rule on the named event bus, attaches the supplied targets, and
+    lists the targets back to confirm the routing is in place.
+  inputs:
+    type: object
+    required:
+    - ruleName
+    - eventPattern
+    - targets
+    properties:
+      ruleName:
+        type: string
+        description: The name of the rule to create.
+      eventBusName:
+        type: string
+        description: The name or ARN of the event bus to add the rule to.
+      eventPattern:
+        type: string
+        description: The event pattern (JSON string) the rule matches against.
+      ruleDescription:
+        type: string
+        description: An optional human-readable description for the rule.
+      targets:
+        type: array
+        description: The list of Target objects to attach to the rule.
+        items:
+          type: object
+  steps:
+  - stepId: putRule
+    description: Create the pattern-matching rule on the event bus, enabled immediately.
+    operationId: PutRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        Description: $inputs.ruleDescription
+        EventPattern: $inputs.eventPattern
+        EventBusName: $inputs.eventBusName
+        State: ENABLED
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleArn: $response.body#/RuleArn
+  - stepId: putTargets
+    description: Attach the supplied targets to the newly created rule.
+    operationId: PutTargets
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutTargets
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Targets: $inputs.targets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      failedEntryCount: $response.body#/FailedEntryCount
+  - stepId: listTargets
+    description: Read the targets back from the rule to confirm they registered.
+    operationId: ListTargetsByRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListTargetsByRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      registeredTargets: $response.body#/Targets
+  outputs:
+    ruleArn: $steps.putRule.outputs.ruleArn
+    registeredTargets: $steps.listTargets.outputs.registeredTargets

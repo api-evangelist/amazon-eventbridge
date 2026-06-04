@@ -1,0 +1,123 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Route and Emit Event
+  summary: Create a rule, attach a target, then publish a matching event onto the bus.
+  description: >-
+    Wires up a routing rule with a target and then publishes a custom event onto
+    the same event bus so it flows through the rule to the target. This is the
+    classic produce-and-route pattern: define how events should be matched and
+    delivered, then send one. Every step spells out its AWS JSON request inline
+    — including the documented X-Amz-Target header — so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: route-and-emit-event
+  summary: Define a rule and target, then emit a matching custom event.
+  description: >-
+    Creates a rule on the event bus, attaches a target, and then publishes a
+    custom event onto the bus, branching on whether EventBridge accepted the
+    event with no failed entries.
+  inputs:
+    type: object
+    required:
+    - ruleName
+    - eventPattern
+    - targets
+    - eventSource
+    - eventDetailType
+    - eventDetail
+    properties:
+      ruleName:
+        type: string
+        description: The name of the rule to create.
+      eventBusName:
+        type: string
+        description: The name or ARN of the event bus to use.
+      eventPattern:
+        type: string
+        description: The event pattern (JSON string) the rule matches against.
+      targets:
+        type: array
+        description: The list of Target objects to attach to the rule.
+        items:
+          type: object
+      eventSource:
+        type: string
+        description: The source field of the event to publish.
+      eventDetailType:
+        type: string
+        description: The detail-type field of the event to publish.
+      eventDetail:
+        type: string
+        description: A valid JSON string containing the event detail.
+  steps:
+  - stepId: putRule
+    description: Create the pattern-matching rule on the event bus, enabled immediately.
+    operationId: PutRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        EventPattern: $inputs.eventPattern
+        EventBusName: $inputs.eventBusName
+        State: ENABLED
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleArn: $response.body#/RuleArn
+  - stepId: putTargets
+    description: Attach the supplied targets to the rule so matched events are delivered.
+    operationId: PutTargets
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutTargets
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Targets: $inputs.targets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      failedEntryCount: $response.body#/FailedEntryCount
+  - stepId: putEvents
+    description: Publish a custom event onto the event bus so it routes through the rule.
+    operationId: PutEvents
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.PutEvents
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Entries:
+        - Source: $inputs.eventSource
+          DetailType: $inputs.eventDetailType
+          Detail: $inputs.eventDetail
+          EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      failedEntryCount: $response.body#/FailedEntryCount
+      entries: $response.body#/Entries
+    onSuccess:
+    - name: allAccepted
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.FailedEntryCount == 0
+        type: jsonpath
+  outputs:
+    ruleArn: $steps.putRule.outputs.ruleArn
+    publishedEntries: $steps.putEvents.outputs.entries
+    publishFailedEntryCount: $steps.putEvents.outputs.failedEntryCount

@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Decommission Rule
+  summary: List a rule's targets, remove them, then delete the rule cleanly.
+  description: >-
+    Tears down a rule in the order EventBridge requires: a rule cannot be
+    deleted while it still has targets, so the workflow first lists the rule's
+    targets, removes them by their IDs, and only then deletes the rule. Every
+    step spells out its AWS JSON request inline — including the documented
+    X-Amz-Target header — so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-rule
+  summary: Remove a rule's targets and then delete the rule.
+  description: >-
+    Lists the targets on a rule, removes those targets by ID, and deletes the
+    now-empty rule.
+  inputs:
+    type: object
+    required:
+    - ruleName
+    - targetIds
+    properties:
+      ruleName:
+        type: string
+        description: The name of the rule to decommission.
+      eventBusName:
+        type: string
+        description: The name or ARN of the event bus the rule lives on.
+      targetIds:
+        type: array
+        description: The IDs of the targets to remove from the rule.
+        items:
+          type: string
+  steps:
+  - stepId: listTargets
+    description: List the rule's current targets before removing them.
+    operationId: ListTargetsByRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListTargetsByRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentTargets: $response.body#/Targets
+  - stepId: removeTargets
+    description: Remove the supplied targets from the rule, forcing removal if needed.
+    operationId: RemoveTargets
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.RemoveTargets
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Ids: $inputs.targetIds
+        Force: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      failedEntryCount: $response.body#/FailedEntryCount
+  - stepId: deleteRule
+    description: Delete the now-empty rule from the event bus.
+    operationId: DeleteRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DeleteRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+        Force: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deleteStatus: $statusCode
+  outputs:
+    removedFromTargets: $steps.listTargets.outputs.currentTargets
+    removeFailedEntryCount: $steps.removeTargets.outputs.failedEntryCount
+    deleteStatus: $steps.deleteRule.outputs.deleteStatus

@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Inspect Rule and Targets
+  summary: Describe a rule's configuration, then list the targets attached to it.
+  description: >-
+    Reads the full picture of a single routing rule: it describes the rule to
+    return its pattern, schedule, and state, and then lists the targets attached
+    to the rule. Useful for auditing or troubleshooting how a given rule routes
+    events. Every step spells out its AWS JSON request inline — including the
+    documented X-Amz-Target header — so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-rule-and-targets
+  summary: Describe a rule and list its targets for auditing.
+  description: >-
+    Describes a rule to read its configuration and lists the targets attached to
+    it, branching on whether the rule is enabled.
+  inputs:
+    type: object
+    required:
+    - ruleName
+    properties:
+      ruleName:
+        type: string
+        description: The name of the rule to inspect.
+      eventBusName:
+        type: string
+        description: The name or ARN of the event bus the rule lives on.
+  steps:
+  - stepId: describeRule
+    description: Describe the rule to read its pattern, schedule, and state.
+    operationId: DescribeRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DescribeRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleArn: $response.body#/Arn
+      ruleState: $response.body#/State
+      eventPattern: $response.body#/EventPattern
+  - stepId: listTargets
+    description: List the targets attached to the rule.
+    operationId: ListTargetsByRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListTargetsByRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Rule: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      targets: $response.body#/Targets
+  outputs:
+    ruleArn: $steps.describeRule.outputs.ruleArn
+    ruleState: $steps.describeRule.outputs.ruleState
+    eventPattern: $steps.describeRule.outputs.eventPattern
+    targets: $steps.listTargets.outputs.targets

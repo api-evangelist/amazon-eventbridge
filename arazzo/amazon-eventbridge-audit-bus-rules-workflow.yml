@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EventBridge Audit Bus Rules
+  summary: List event buses, list a bus's rules, then describe a chosen rule.
+  description: >-
+    A discovery and audit flow across the EventBridge control plane: it lists the
+    event buses in the account, lists the rules on a named bus, and describes a
+    specific rule to surface its full configuration. Branching ends the flow
+    early when the bus has no rules to describe. Every step spells out its AWS
+    JSON request inline — including the documented X-Amz-Target header — so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: eventbridgeApi
+  url: ../openapi/amazon-eventbridge-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-bus-rules
+  summary: Walk buses, list a bus's rules, and describe a target rule.
+  description: >-
+    Lists event buses, lists the rules on a named bus, and — when rules exist —
+    describes a specific rule to read its configuration.
+  inputs:
+    type: object
+    required:
+    - eventBusName
+    - ruleName
+    properties:
+      eventBusName:
+        type: string
+        description: The name of the event bus whose rules are audited.
+      ruleName:
+        type: string
+        description: The name of the rule to describe.
+      busNamePrefix:
+        type: string
+        description: An optional prefix to filter the listed event buses by name.
+  steps:
+  - stepId: listEventBuses
+    description: List the event buses in the account, optionally filtered by name prefix.
+    operationId: ListEventBuses
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListEventBuses
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        NamePrefix: $inputs.busNamePrefix
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventBuses: $response.body#/EventBuses
+  - stepId: listRules
+    description: List the rules on the named event bus.
+    operationId: ListRules
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.ListRules
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rules: $response.body#/Rules
+    onSuccess:
+    - name: hasRules
+      type: goto
+      stepId: describeRule
+      criteria:
+      - context: $response.body
+        condition: $.Rules.length > 0
+        type: jsonpath
+    - name: noRules
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.Rules.length == 0
+        type: jsonpath
+  - stepId: describeRule
+    description: Describe the chosen rule to read its pattern, schedule, and state.
+    operationId: DescribeRule
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSEvents.DescribeRule
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        Name: $inputs.ruleName
+        EventBusName: $inputs.eventBusName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleArn: $response.body#/Arn
+      ruleState: $response.body#/State
+      eventPattern: $response.body#/EventPattern
+  outputs:
+    eventBuses: $steps.listEventBuses.outputs.eventBuses
+    rules: $steps.listRules.outputs.rules
+    ruleArn: $steps.describeRule.outputs.ruleArn
