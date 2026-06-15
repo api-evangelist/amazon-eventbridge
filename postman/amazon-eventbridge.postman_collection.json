@@ -1,0 +1,2896 @@
+{
+  "info": {
+    "_postman_id": "e6f8f6bf-eb8f-4b1e-8be4-28cbbabb6b4b",
+    "name": "Amazon EventBridge API",
+    "description": "Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:03:50.000Z",
+    "updatedAt": "2026-06-05T15:03:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e6f8f6bf-eb8f-4b1e-8be4-28cbbabb6b4b"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Amazon EventBridge Put Events",
+          "id": "ba1305b4-f14c-436c-a037-6bc052556116",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.PutEvents"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Entries\": [\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    },\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Sends custom events to Amazon EventBridge so that they can be matched to rules."
+          },
+          "response": [
+            {
+              "id": "b2a4eaa9-7b2d-4ade-a7d5-f9b0b1a27183",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutEvents"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Entries\": [\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    },\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"FailedEntryCount\": \"<integer>\",\n  \"Entries\": [\n    {\n      \"EventId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    },\n    {\n      \"EventId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-b2a4eaa9-7b2d-4ade-a7d5-f9b0b1a27183"
+            },
+            {
+              "id": "e58fedb4-e6de-4110-a3e7-85b5006e0cc8",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutEvents"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Entries\": [\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    },\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-e58fedb4-e6de-4110-a3e7-85b5006e0cc8"
+            },
+            {
+              "id": "1d7ba2dd-1575-49d7-a56c-0bc40df28834",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutEvents"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Entries\": [\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    },\n    {\n      \"Source\": \"<string>\",\n      \"DetailType\": \"<string>\",\n      \"Detail\": \"<string>\",\n      \"Resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"EventBusName\": \"<string>\",\n      \"Time\": \"<dateTime>\",\n      \"TraceHeader\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-1d7ba2dd-1575-49d7-a56c-0bc40df28834"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-ba1305b4-f14c-436c-a037-6bc052556116"
+        }
+      ],
+      "id": "4125d08e-a6c9-43f6-a1e4-f3cbbd755d40",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-4125d08e-a6c9-43f6-a1e4-f3cbbd755d40"
+    },
+    {
+      "name": "?PutRule",
+      "item": [
+        {
+          "name": "Amazon EventBridge Put Rule",
+          "id": "7c8500f3-afc4-42ec-9bb1-6cd7d84b5e36",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.PutRule"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"ScheduleExpression\": \"<string>\",\n  \"State\": \"DISABLED\",\n  \"RoleArn\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?PutRule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "PutRule",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates or updates the specified rule. Rules are enabled by default or based on the provided State parameter."
+          },
+          "response": [
+            {
+              "id": "58fce2aa-766a-4807-a532-0de12b67d712",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"ScheduleExpression\": \"<string>\",\n  \"State\": \"DISABLED\",\n  \"RoleArn\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"RuleArn\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-58fce2aa-766a-4807-a532-0de12b67d712"
+            },
+            {
+              "id": "26f466bc-e2c0-488d-830a-c2cee9180047",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"ScheduleExpression\": \"<string>\",\n  \"State\": \"DISABLED\",\n  \"RoleArn\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-26f466bc-e2c0-488d-830a-c2cee9180047"
+            },
+            {
+              "id": "155a7784-7d11-4f57-b724-6f3f5aef012d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"ScheduleExpression\": \"<string>\",\n  \"State\": \"DISABLED\",\n  \"RoleArn\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-155a7784-7d11-4f57-b724-6f3f5aef012d"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-7c8500f3-afc4-42ec-9bb1-6cd7d84b5e36"
+        }
+      ],
+      "id": "ad0c35af-a9e1-49d4-9a01-a6aff621968e",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-ad0c35af-a9e1-49d4-9a01-a6aff621968e"
+    },
+    {
+      "name": "?DescribeRule",
+      "item": [
+        {
+          "name": "Amazon EventBridge Describe Rule",
+          "id": "c8dad5b6-37df-4367-9e13-9f9554951e2a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.DescribeRule"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?DescribeRule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "DescribeRule",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Describes the specified rule."
+          },
+          "response": [
+            {
+              "id": "44df7b27-3213-484d-aaa7-7367fd9fda31",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Name\": \"<string>\",\n  \"Arn\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"ScheduleExpression\": \"<string>\",\n  \"State\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"RoleArn\": \"<string>\",\n  \"EventBusName\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-44df7b27-3213-484d-aaa7-7367fd9fda31"
+            },
+            {
+              "id": "2f9bcaec-7a5f-4b81-848f-f4d78bf3816e",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-2f9bcaec-7a5f-4b81-848f-f4d78bf3816e"
+            },
+            {
+              "id": "37a482b0-7e24-4030-b307-c4ad7e22cdb6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-37a482b0-7e24-4030-b307-c4ad7e22cdb6"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-c8dad5b6-37df-4367-9e13-9f9554951e2a"
+        }
+      ],
+      "id": "e6d7a75d-02b6-4271-a0c3-cf9084daa800",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-e6d7a75d-02b6-4271-a0c3-cf9084daa800"
+    },
+    {
+      "name": "?ListRules",
+      "item": [
+        {
+          "name": "Amazon EventBridge List Rules",
+          "id": "77234344-f8df-4b9c-b316-d01ff518aeb8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.ListRules"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?ListRules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "ListRules",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names."
+          },
+          "response": [
+            {
+              "id": "6eead3a5-5f31-4e5f-8dd9-ef20f0977709",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListRules"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Rules\": [\n    {\n      \"Name\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"EventPattern\": \"<string>\",\n      \"State\": \"DISABLED\",\n      \"Description\": \"<string>\",\n      \"ScheduleExpression\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"EventBusName\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"EventPattern\": \"<string>\",\n      \"State\": \"DISABLED\",\n      \"Description\": \"<string>\",\n      \"ScheduleExpression\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"EventBusName\": \"<string>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-6eead3a5-5f31-4e5f-8dd9-ef20f0977709"
+            },
+            {
+              "id": "899f9650-167b-4838-b383-5827d2da63c3",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListRules"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-899f9650-167b-4838-b383-5827d2da63c3"
+            },
+            {
+              "id": "404f6af0-1bff-4cde-8846-ddc50df2e2a4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListRules"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-404f6af0-1bff-4cde-8846-ddc50df2e2a4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-77234344-f8df-4b9c-b316-d01ff518aeb8"
+        }
+      ],
+      "id": "25a85777-2203-47a6-9f9f-68367f10270a",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-25a85777-2203-47a6-9f9f-68367f10270a"
+    },
+    {
+      "name": "?DeleteRule",
+      "item": [
+        {
+          "name": "Amazon EventBridge Delete Rule",
+          "id": "b42a26dd-552e-49a5-82eb-607f0df7226d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.DeleteRule"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?DeleteRule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "DeleteRule",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Deletes the specified rule. Before you can delete the rule, you must remove all targets."
+          },
+          "response": [
+            {
+              "id": "c1aa2261-acba-49f0-9495-6024b8c727e4",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-c1aa2261-acba-49f0-9495-6024b8c727e4"
+            },
+            {
+              "id": "1e747abb-f6e0-49a0-9899-5a547e3ba809",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-1e747abb-f6e0-49a0-9899-5a547e3ba809"
+            },
+            {
+              "id": "e84219e2-af45-411c-9f13-e6961ff6b15d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-e84219e2-af45-411c-9f13-e6961ff6b15d"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-b42a26dd-552e-49a5-82eb-607f0df7226d"
+        }
+      ],
+      "id": "94dd975e-5b2e-47cd-b37b-c1f4e61d7d55",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-94dd975e-5b2e-47cd-b37b-c1f4e61d7d55"
+    },
+    {
+      "name": "?PutTargets",
+      "item": [
+        {
+          "name": "Amazon EventBridge Put Targets",
+          "id": "fbe24dfe-ae63-4917-b1cf-7164bbe8b010",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.PutTargets"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Rule\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"sint_a9\": \"<string>\",\n          \"ut_8b\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"ea_8\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    }\n  ],\n  \"EventBusName\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?PutTargets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "PutTargets",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule."
+          },
+          "response": [
+            {
+              "id": "d91f8154-d140-41e8-9652-2be95865e629",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"sint_a9\": \"<string>\",\n          \"ut_8b\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"ea_8\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    }\n  ],\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"FailedEntryCount\": \"<integer>\",\n  \"FailedEntries\": [\n    {\n      \"TargetId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    },\n    {\n      \"TargetId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-d91f8154-d140-41e8-9652-2be95865e629"
+            },
+            {
+              "id": "55992c6e-2775-4367-ac26-b3236bfd6b3c",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"sint_a9\": \"<string>\",\n          \"ut_8b\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"ea_8\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    }\n  ],\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-55992c6e-2775-4367-ac26-b3236bfd6b3c"
+            },
+            {
+              "id": "d6d4e8fd-009c-4285-9c73-36020c9eb6c8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.PutTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"sint_a9\": \"<string>\",\n          \"ut_8b\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"ea_8\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    }\n  ],\n  \"EventBusName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-d6d4e8fd-009c-4285-9c73-36020c9eb6c8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-fbe24dfe-ae63-4917-b1cf-7164bbe8b010"
+        }
+      ],
+      "id": "b0d4f2da-8f1b-464d-b220-2caf4b6e6520",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-b0d4f2da-8f1b-464d-b220-2caf4b6e6520"
+    },
+    {
+      "name": "?ListTargetsByRule",
+      "item": [
+        {
+          "name": "Amazon EventBridge List Targets by Rule",
+          "id": "0f4eb7b5-9038-4424-b875-c1e4bd3d8a5e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.ListTargetsByRule"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Rule\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?ListTargetsByRule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "ListTargetsByRule",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Lists the targets assigned to the specified rule."
+          },
+          "response": [
+            {
+              "id": "3b84ec6e-a0fd-45dc-8292-73446525cd58",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListTargetsByRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Targets\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"elitc\": \"<string>\",\n          \"qui551\": \"<string>\",\n          \"officiaf\": \"<string>\",\n          \"ametd\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"RoleArn\": \"<string>\",\n      \"Input\": \"<string>\",\n      \"InputPath\": \"<string>\",\n      \"InputTransformer\": {\n        \"InputPathsMap\": {\n          \"do87\": \"<string>\",\n          \"cillum_\": \"<string>\"\n        },\n        \"InputTemplate\": \"<string>\"\n      }\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-3b84ec6e-a0fd-45dc-8292-73446525cd58"
+            },
+            {
+              "id": "13b4615a-0c89-4f33-9ecc-4d75bb5929fe",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListTargetsByRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-13b4615a-0c89-4f33-9ecc-4d75bb5929fe"
+            },
+            {
+              "id": "a768952f-88c5-4777-a600-40f1dca8ab96",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListTargetsByRule"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"EventBusName\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-a768952f-88c5-4777-a600-40f1dca8ab96"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-0f4eb7b5-9038-4424-b875-c1e4bd3d8a5e"
+        }
+      ],
+      "id": "030b95fe-2cda-41c0-b74a-af0263884126",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-030b95fe-2cda-41c0-b74a-af0263884126"
+    },
+    {
+      "name": "?RemoveTargets",
+      "item": [
+        {
+          "name": "Amazon EventBridge Remove Targets",
+          "id": "390c22f4-156c-40f8-b2c0-6cd277acfefa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.RemoveTargets"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Rule\": \"<string>\",\n  \"Ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?RemoveTargets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "RemoveTargets",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Removes the specified targets from the specified rule."
+          },
+          "response": [
+            {
+              "id": "0951e7dc-89e8-447e-a224-d05d89e4d2ae",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.RemoveTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"FailedEntryCount\": \"<integer>\",\n  \"FailedEntries\": [\n    {\n      \"TargetId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    },\n    {\n      \"TargetId\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"ErrorMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-0951e7dc-89e8-447e-a224-d05d89e4d2ae"
+            },
+            {
+              "id": "cd02bb23-2f59-4b66-90e4-7b9d7e7ca025",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.RemoveTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-cd02bb23-2f59-4b66-90e4-7b9d7e7ca025"
+            },
+            {
+              "id": "999cd718-fc2c-4a10-a71e-6db026c20d7d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.RemoveTargets"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<string>\",\n  \"Ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"EventBusName\": \"<string>\",\n  \"Force\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-999cd718-fc2c-4a10-a71e-6db026c20d7d"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-390c22f4-156c-40f8-b2c0-6cd277acfefa"
+        }
+      ],
+      "id": "0fdf4abe-fb09-4dc4-bc8a-6149b7b37df1",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-0fdf4abe-fb09-4dc4-bc8a-6149b7b37df1"
+    },
+    {
+      "name": "?CreateEventBus",
+      "item": [
+        {
+          "name": "Amazon EventBridge Create Event Bus",
+          "id": "49639d62-64fd-43de-a5c5-08dda6a9e794",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.CreateEventBus"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventSourceName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?CreateEventBus",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "CreateEventBus",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates a new event bus within your account."
+          },
+          "response": [
+            {
+              "id": "b75bce43-44fa-4256-8da2-bf777210a5ec",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventSourceName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"EventBusArn\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-b75bce43-44fa-4256-8da2-bf777210a5ec"
+            },
+            {
+              "id": "4080def0-d3b1-4328-8b67-f80e5a7d1748",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventSourceName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-4080def0-d3b1-4328-8b67-f80e5a7d1748"
+            },
+            {
+              "id": "a3227cfe-a45f-47a0-9110-3876fa0e66c2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"EventSourceName\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-a3227cfe-a45f-47a0-9110-3876fa0e66c2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-49639d62-64fd-43de-a5c5-08dda6a9e794"
+        }
+      ],
+      "id": "b8d15dfb-c452-46ac-bb3d-ac061c9b27b5",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-b8d15dfb-c452-46ac-bb3d-ac061c9b27b5"
+    },
+    {
+      "name": "?DescribeEventBus",
+      "item": [
+        {
+          "name": "Amazon EventBridge Describe Event Bus",
+          "id": "e9a86dda-4517-4779-a897-8f24caeba9d6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.DescribeEventBus"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?DescribeEventBus",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "DescribeEventBus",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Displays details about an event bus in your account, including the default event bus."
+          },
+          "response": [
+            {
+              "id": "97b875c8-95d6-4e4d-b03f-e916fa7465bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Name\": \"<string>\",\n  \"Arn\": \"<string>\",\n  \"Policy\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-97b875c8-95d6-4e4d-b03f-e916fa7465bf"
+            },
+            {
+              "id": "9ee0ee58-5137-4263-b0bf-c2f02941b767",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-9ee0ee58-5137-4263-b0bf-c2f02941b767"
+            },
+            {
+              "id": "be30a8f9-1bd4-4322-9fe6-c0b1c726e6a2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DescribeEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-be30a8f9-1bd4-4322-9fe6-c0b1c726e6a2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-e9a86dda-4517-4779-a897-8f24caeba9d6"
+        }
+      ],
+      "id": "55fe9350-29c3-47f6-9e41-2ce363a60628",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-55fe9350-29c3-47f6-9e41-2ce363a60628"
+    },
+    {
+      "name": "?ListEventBuses",
+      "item": [
+        {
+          "name": "Amazon EventBridge List Event Buses",
+          "id": "26e5eabd-8e1e-463a-8c44-d5bb2ec8bf02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.ListEventBuses"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?ListEventBuses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "ListEventBuses",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Lists all the event buses in your account, including the default event bus."
+          },
+          "response": [
+            {
+              "id": "aaba3478-cfe5-45ec-8aa7-4102d71d2a76",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListEventBuses"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"EventBuses\": [\n    {\n      \"Name\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"Policy\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"Policy\": \"<string>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-aaba3478-cfe5-45ec-8aa7-4102d71d2a76"
+            },
+            {
+              "id": "fb820b55-1030-41a3-a714-9c872ea6d1fe",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListEventBuses"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-fb820b55-1030-41a3-a714-9c872ea6d1fe"
+            },
+            {
+              "id": "0bf164d1-e730-47b7-ab5b-751ad9a27a6b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListEventBuses"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-0bf164d1-e730-47b7-ab5b-751ad9a27a6b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-26e5eabd-8e1e-463a-8c44-d5bb2ec8bf02"
+        }
+      ],
+      "id": "850a49e4-7bae-4e61-89ce-829bfefa020a",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-850a49e4-7bae-4e61-89ce-829bfefa020a"
+    },
+    {
+      "name": "?DeleteEventBus",
+      "item": [
+        {
+          "name": "Amazon EventBridge Delete Event Bus",
+          "id": "95b98ef6-c1b0-4641-aa62-e6534bbe37f9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.DeleteEventBus"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?DeleteEventBus",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "DeleteEventBus",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Deletes the specified custom event bus or partner event bus. The default event bus cannot be deleted."
+          },
+          "response": [
+            {
+              "id": "e1e85f93-2d38-49bc-87ec-427fabace4df",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-e1e85f93-2d38-49bc-87ec-427fabace4df"
+            },
+            {
+              "id": "ce5ba003-2e50-46fc-9388-f3f0a73c3fde",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-ce5ba003-2e50-46fc-9388-f3f0a73c3fde"
+            },
+            {
+              "id": "d4d754f4-5732-415e-b1b0-754f5c2ed838",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.DeleteEventBus"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-d4d754f4-5732-415e-b1b0-754f5c2ed838"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-95b98ef6-c1b0-4641-aa62-e6534bbe37f9"
+        }
+      ],
+      "id": "76ed1a55-276b-474b-ac9c-357a231d459a",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-76ed1a55-276b-474b-ac9c-357a231d459a"
+    },
+    {
+      "name": "?CreateArchive",
+      "item": [
+        {
+          "name": "Amazon EventBridge Create Archive",
+          "id": "2dc0260a-0733-4f49-a048-99951da362a6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.CreateArchive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ArchiveName\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"RetentionDays\": \"<integer>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?CreateArchive",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "CreateArchive",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates an archive of events with the specified settings."
+          },
+          "response": [
+            {
+              "id": "4ba3d69d-2182-4d21-a511-20c9285bbbaf",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateArchive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ArchiveName\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"RetentionDays\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ArchiveArn\": \"<string>\",\n  \"State\": \"<string>\",\n  \"CreationTime\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-4ba3d69d-2182-4d21-a511-20c9285bbbaf"
+            },
+            {
+              "id": "fd78a3b1-75dd-43c1-adc7-0fcc5752de9c",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateArchive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ArchiveName\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"RetentionDays\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-fd78a3b1-75dd-43c1-adc7-0fcc5752de9c"
+            },
+            {
+              "id": "9611c0da-884f-4b7b-9169-bf77fd3c0067",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.CreateArchive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ArchiveName\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"EventPattern\": \"<string>\",\n  \"RetentionDays\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-9611c0da-884f-4b7b-9169-bf77fd3c0067"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-2dc0260a-0733-4f49-a048-99951da362a6"
+        }
+      ],
+      "id": "2a7035ab-ce61-48dc-82bf-f76d134cd491",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-2a7035ab-ce61-48dc-82bf-f76d134cd491"
+    },
+    {
+      "name": "?ListArchives",
+      "item": [
+        {
+          "name": "Amazon EventBridge List Archives",
+          "id": "b8bd73ac-242e-4032-bdbd-80237e8aee05",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AWSEvents.ListArchives"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"State\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?ListArchives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "ListArchives",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Lists your archives."
+          },
+          "response": [
+            {
+              "id": "82202306-1b7d-421e-881d-5aad931d649e",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListArchives"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"State\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Archives\": [\n    {\n      \"ArchiveName\": \"<string>\",\n      \"EventSourceArn\": \"<string>\",\n      \"State\": \"<string>\",\n      \"RetentionDays\": \"<integer>\",\n      \"SizeBytes\": \"<integer>\",\n      \"EventCount\": \"<integer>\",\n      \"CreationTime\": \"<dateTime>\"\n    },\n    {\n      \"ArchiveName\": \"<string>\",\n      \"EventSourceArn\": \"<string>\",\n      \"State\": \"<string>\",\n      \"RetentionDays\": \"<integer>\",\n      \"SizeBytes\": \"<integer>\",\n      \"EventCount\": \"<integer>\",\n      \"CreationTime\": \"<dateTime>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-82202306-1b7d-421e-881d-5aad931d649e"
+            },
+            {
+              "id": "99d3e898-9260-4f59-a18b-b02d41fa4fdf",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListArchives"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"State\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-99d3e898-9260-4f59-a18b-b02d41fa4fdf"
+            },
+            {
+              "id": "38c8dde4-1083-4a2e-aa01-a52778f4b8bc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AWSEvents.ListArchives"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamePrefix\": \"<string>\",\n  \"EventSourceArn\": \"<string>\",\n  \"State\": \"<string>\",\n  \"NextToken\": \"<string>\",\n  \"Limit\": \"<integer>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:03:50.000Z",
+              "updatedAt": "2026-06-05T15:03:50.000Z",
+              "uid": "35240-38c8dde4-1083-4a2e-aa01-a52778f4b8bc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:03:50.000Z",
+          "updatedAt": "2026-06-05T15:03:50.000Z",
+          "uid": "35240-b8bd73ac-242e-4032-bdbd-80237e8aee05"
+        }
+      ],
+      "id": "34bff046-62b3-425d-89d0-e9a0477752d7",
+      "createdAt": "2026-06-05T15:03:50.000Z",
+      "updatedAt": "2026-06-05T15:03:50.000Z",
+      "uid": "35240-34bff046-62b3-425d-89d0-e9a0477752d7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://events.{{region}}.amazonaws.com"
+    }
+  ]
+}
