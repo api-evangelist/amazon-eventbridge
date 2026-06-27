@@ -54,36 +54,33 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-eventbridge/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/amazon-eventbridge-archive-event-bus-workflow.yml
-        name: Amazon EventBridge Archive Event Bus
-        summary: Create a bus, resolve its ARN, then archive matching events from it.
-      - url: arazzo/amazon-eventbridge-audit-bus-rules-workflow.yml
-        name: Amazon EventBridge Audit Bus Rules
-        summary: List event buses, list a bus's rules, then describe a chosen rule.
-      - url: arazzo/amazon-eventbridge-create-and-verify-archive-workflow.yml
-        name: Amazon EventBridge Create and Verify Archive
-        summary: Create an event archive, then list archives to confirm it exists.
-      - url: arazzo/amazon-eventbridge-create-rule-with-targets-workflow.yml
-        name: Amazon EventBridge Create Rule with Targets
-        summary: Create a rule on an existing event bus, attach targets, and verify them.
-      - url: arazzo/amazon-eventbridge-decommission-rule-workflow.yml
-        name: Amazon EventBridge Decommission Rule
-        summary: List a rule's targets, remove them, then delete the rule cleanly.
-      - url: arazzo/amazon-eventbridge-inspect-rule-and-targets-workflow.yml
-        name: Amazon EventBridge Inspect Rule and Targets
-        summary: Describe a rule's configuration, then list the targets attached to it.
-      - url: arazzo/amazon-eventbridge-provision-event-bus-routing-workflow.yml
-        name: Amazon EventBridge Provision Event Bus Routing
-        summary: Stand up a custom event bus, attach a rule, wire targets, and confirm the wiring.
-      - url: arazzo/amazon-eventbridge-route-and-emit-event-workflow.yml
-        name: Amazon EventBridge Route and Emit Event
-        summary: Create a rule, attach a target, then publish a matching event onto the bus.
-      - url: arazzo/amazon-eventbridge-teardown-event-bus-workflow.yml
-        name: Amazon EventBridge Teardown Event Bus
-        summary: Inspect a bus's rules, delete a rule, then delete the custom event bus.
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-archive-event-bus-workflow.yml
+    name: Amazon EventBridge Archive Event Bus
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-audit-bus-rules-workflow.yml
+    name: Amazon EventBridge Audit Bus Rules
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-create-and-verify-archive-workflow.yml
+    name: Amazon EventBridge Create and Verify Archive
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-create-rule-with-targets-workflow.yml
+    name: Amazon EventBridge Create Rule with Targets
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-decommission-rule-workflow.yml
+    name: Amazon EventBridge Decommission Rule
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-inspect-rule-and-targets-workflow.yml
+    name: Amazon EventBridge Inspect Rule and Targets
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-provision-event-bus-routing-workflow.yml
+    name: Amazon EventBridge Provision Event Bus Routing
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-route-and-emit-event-workflow.yml
+    name: Amazon EventBridge Route and Emit Event
+  - type: Arazzo
+    url: arazzo/amazon-eventbridge-teardown-event-bus-workflow.yml
+    name: Amazon EventBridge Teardown Event Bus
   - type: Portal
     url: https://aws.amazon.com/
   - type: DeveloperPortal
@@ -96,7 +93,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/events/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: Login
     url: https://signin.aws.amazon.com/
