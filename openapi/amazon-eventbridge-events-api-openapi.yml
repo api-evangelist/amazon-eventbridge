@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Amazon EventBridge Archives Events API
+  description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
+  version: '2015-10-07'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eventbridge/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://events.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+security:
+- aws_sigv4: []
+tags:
+- name: Events
+  description: Operations for putting events to EventBridge.
+paths:
+  /:
+    post:
+      operationId: PutEvents
+      summary: Amazon EventBridge Put Events
+      description: Sends custom events to Amazon EventBridge so that they can be matched to rules.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-PutEvents'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/PutEventsRequest'
+            examples:
+              PutEventsRequestExample:
+                summary: Default PutEvents request
+                x-microcks-default: true
+                value:
+                  Entries: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutEventsResponse'
+              examples:
+                PutEvents200Example:
+                  summary: Default PutEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    FailedEntryCount: 1
+                    Entries: []
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Events
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PutEventsRequest:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          description: The entry that defines an event in your system.
+      required:
+      - Entries
+    PutEventsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+          description: The number of failed entries.
+        Entries:
+          type: array
+          items:
+            type: object
+            properties:
+              EventId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
+    Event:
+      type: object
+      properties:
+        Source:
+          type: string
+          description: The source of the event.
+        DetailType:
+          type: string
+          description: Free-form string used to decide what fields to expect in the event detail.
+        Detail:
+          type: string
+          description: A valid JSON string containing the event detail.
+        Resources:
+          type: array
+          items:
+            type: string
+          description: AWS resources involved in the event.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus to receive the event.
+        Time:
+          type: string
+          format: date-time
+          description: The timestamp of the event.
+        TraceHeader:
+          type: string
+          description: An AWS X-Ray trace header for tracing the event.
+      required:
+      - Source
+      - DetailType
+      - Detail
+  parameters:
+    X-Amz-Target-PutEvents:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutEvents
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.

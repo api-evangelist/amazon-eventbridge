@@ -1,0 +1,368 @@
+openapi: 3.1.0
+info:
+  title: Amazon EventBridge Archives Rules API
+  description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
+  version: '2015-10-07'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eventbridge/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://events.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+security:
+- aws_sigv4: []
+tags:
+- name: Rules
+  description: Operations for managing EventBridge rules.
+paths:
+  /?PutRule:
+    post:
+      operationId: PutRule
+      summary: Amazon EventBridge Put Rule
+      description: Creates or updates the specified rule. Rules are enabled by default or based on the provided State parameter.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-PutRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/PutRuleRequest'
+            examples:
+              PutRuleRequestExample:
+                summary: Default PutRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  Description: Example description
+                  EventPattern: example
+                  ScheduleExpression: example
+                  State: ENABLED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutRuleResponse'
+              examples:
+                PutRule200Example:
+                  summary: Default PutRule 200 response
+                  x-microcks-default: true
+                  value:
+                    RuleArn: arn:aws:service:us-east-1:123456789012:resource/example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?DescribeRule:
+    post:
+      operationId: DescribeRule
+      summary: Amazon EventBridge Describe Rule
+      description: Describes the specified rule.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-DescribeRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DescribeRuleRequest'
+            examples:
+              DescribeRuleRequestExample:
+                summary: Default DescribeRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventBusName: example-name
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRuleResponse'
+              examples:
+                DescribeRule200Example:
+                  summary: Default DescribeRule 200 response
+                  x-microcks-default: true
+                  value:
+                    Name: example-name
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    EventPattern: example
+                    ScheduleExpression: example
+                    State: example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?ListRules:
+    post:
+      operationId: ListRules
+      summary: Amazon EventBridge List Rules
+      description: Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-ListRules'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListRulesRequest'
+            examples:
+              ListRulesRequestExample:
+                summary: Default ListRules request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  EventBusName: example-name
+                  NextToken: example
+                  Limit: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRulesResponse'
+              examples:
+                ListRules200Example:
+                  summary: Default ListRules 200 response
+                  x-microcks-default: true
+                  value:
+                    Rules: []
+                    NextToken: example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?DeleteRule:
+    post:
+      operationId: DeleteRule
+      summary: Amazon EventBridge Delete Rule
+      description: Deletes the specified rule. Before you can delete the rule, you must remove all targets.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-DeleteRule'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DeleteRuleRequest'
+            examples:
+              DeleteRuleRequestExample:
+                summary: Default DeleteRule request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventBusName: example-name
+                  Force: true
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Rules
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListRulesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    DescribeRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+      required:
+      - Name
+    Rule:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the rule.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the rule.
+        EventPattern:
+          type: string
+          description: The event pattern of the rule.
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: The state of the rule.
+        Description:
+          type: string
+          description: The description of the rule.
+        ScheduleExpression:
+          type: string
+          description: The scheduling expression (e.g., cron or rate expression).
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus associated with the rule.
+    PutRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+      - Name
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
+    DeleteRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+        Force:
+          type: boolean
+      required:
+      - Name
+    DescribeRuleResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+        Description:
+          type: string
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+  parameters:
+    X-Amz-Target-PutRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutRule
+    X-Amz-Target-DescribeRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DescribeRule
+    X-Amz-Target-DeleteRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DeleteRule
+    X-Amz-Target-ListRules:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListRules
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.

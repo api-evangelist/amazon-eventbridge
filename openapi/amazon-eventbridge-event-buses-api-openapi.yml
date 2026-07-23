@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Amazon EventBridge Archives Event Buses API
+  description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
+  version: '2015-10-07'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eventbridge/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://events.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+security:
+- aws_sigv4: []
+tags:
+- name: Event Buses
+  description: Operations for managing event buses.
+paths:
+  /?CreateEventBus:
+    post:
+      operationId: CreateEventBus
+      summary: Amazon EventBridge Create Event Bus
+      description: Creates a new event bus within your account.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-CreateEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateEventBusRequest'
+            examples:
+              CreateEventBusRequestExample:
+                summary: Default CreateEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+                  EventSourceName: example-name
+                  Tags: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEventBusResponse'
+              examples:
+                CreateEventBus200Example:
+                  summary: Default CreateEventBus 200 response
+                  x-microcks-default: true
+                  value:
+                    EventBusArn: arn:aws:service:us-east-1:123456789012:resource/example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?DescribeEventBus:
+    post:
+      operationId: DescribeEventBus
+      summary: Amazon EventBridge Describe Event Bus
+      description: Displays details about an event bus in your account, including the default event bus.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-DescribeEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DescribeEventBusRequest'
+            examples:
+              DescribeEventBusRequestExample:
+                summary: Default DescribeEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeEventBusResponse'
+              examples:
+                DescribeEventBus200Example:
+                  summary: Default DescribeEventBus 200 response
+                  x-microcks-default: true
+                  value:
+                    Name: example-name
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    Policy: example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?ListEventBuses:
+    post:
+      operationId: ListEventBuses
+      summary: Amazon EventBridge List Event Buses
+      description: Lists all the event buses in your account, including the default event bus.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-ListEventBuses'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListEventBusesRequest'
+            examples:
+              ListEventBusesRequestExample:
+                summary: Default ListEventBuses request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  NextToken: example
+                  Limit: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEventBusesResponse'
+              examples:
+                ListEventBuses200Example:
+                  summary: Default ListEventBuses 200 response
+                  x-microcks-default: true
+                  value:
+                    EventBuses: []
+                    NextToken: example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?DeleteEventBus:
+    post:
+      operationId: DeleteEventBus
+      summary: Amazon EventBridge Delete Event Bus
+      description: Deletes the specified custom event bus or partner event bus. The default event bus cannot be deleted.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-DeleteEventBus'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/DeleteEventBusRequest'
+            examples:
+              DeleteEventBusRequestExample:
+                summary: Default DeleteEventBus request
+                x-microcks-default: true
+                value:
+                  Name: example-name
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Event Buses
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CreateEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventSourceName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+      - Name
+    DescribeEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+    DescribeEventBusResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        Policy:
+          type: string
+    EventBus:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the event bus.
+        Arn:
+          type: string
+          description: The ARN of the event bus.
+        Policy:
+          type: string
+          description: The permissions policy of the event bus.
+    DeleteEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+      required:
+      - Name
+    ListEventBusesResponse:
+      type: object
+      properties:
+        EventBuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventBus'
+        NextToken:
+          type: string
+    ListEventBusesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    CreateEventBusResponse:
+      type: object
+      properties:
+        EventBusArn:
+          type: string
+  parameters:
+    X-Amz-Target-DeleteEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DeleteEventBus
+    X-Amz-Target-ListEventBuses:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListEventBuses
+    X-Amz-Target-DescribeEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DescribeEventBus
+    X-Amz-Target-CreateEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateEventBus
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.

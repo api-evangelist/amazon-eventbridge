@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Amazon EventBridge Archives API
+  description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
+  version: '2015-10-07'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eventbridge/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://events.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+security:
+- aws_sigv4: []
+tags:
+- name: Archives
+  description: Operations for managing event archives.
+paths:
+  /?CreateArchive:
+    post:
+      operationId: CreateArchive
+      summary: Amazon EventBridge Create Archive
+      description: Creates an archive of events with the specified settings.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-CreateArchive'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateArchiveRequest'
+            examples:
+              CreateArchiveRequestExample:
+                summary: Default CreateArchive request
+                x-microcks-default: true
+                value:
+                  ArchiveName: example-name
+                  EventSourceArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  Description: Example description
+                  EventPattern: example
+                  RetentionDays: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateArchiveResponse'
+              examples:
+                CreateArchive200Example:
+                  summary: Default CreateArchive 200 response
+                  x-microcks-default: true
+                  value:
+                    ArchiveArn: arn:aws:service:us-east-1:123456789012:resource/example
+                    State: example
+                    CreationTime: '2025-01-15T00:00:00Z'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Archives
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /?ListArchives:
+    post:
+      operationId: ListArchives
+      summary: Amazon EventBridge List Archives
+      description: Lists your archives.
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target-ListArchives'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/ListArchivesRequest'
+            examples:
+              ListArchivesRequestExample:
+                summary: Default ListArchives request
+                x-microcks-default: true
+                value:
+                  NamePrefix: example-name
+                  EventSourceArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  State: example
+                  NextToken: example
+                  Limit: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListArchivesResponse'
+              examples:
+                ListArchives200Example:
+                  summary: Default ListArchives 200 response
+                  x-microcks-default: true
+                  value:
+                    Archives: []
+                    NextToken: example
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      tags:
+      - Archives
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListArchivesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventSourceArn:
+          type: string
+        State:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    ListArchivesResponse:
+      type: object
+      properties:
+        Archives:
+          type: array
+          items:
+            type: object
+            properties:
+              ArchiveName:
+                type: string
+              EventSourceArn:
+                type: string
+              State:
+                type: string
+              RetentionDays:
+                type: integer
+              SizeBytes:
+                type: integer
+              EventCount:
+                type: integer
+              CreationTime:
+                type: string
+                format: date-time
+        NextToken:
+          type: string
+    CreateArchiveResponse:
+      type: object
+      properties:
+        ArchiveArn:
+          type: string
+        State:
+          type: string
+        CreationTime:
+          type: string
+          format: date-time
+    CreateArchiveRequest:
+      type: object
+      properties:
+        ArchiveName:
+          type: string
+        EventSourceArn:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        RetentionDays:
+          type: integer
+      required:
+      - ArchiveName
+      - EventSourceArn
+  parameters:
+    X-Amz-Target-ListArchives:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListArchives
+    X-Amz-Target-CreateArchive:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateArchive
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
