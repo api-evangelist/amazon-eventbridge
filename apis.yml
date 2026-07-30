@@ -3,6 +3,19 @@ description: >-
   Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a
   variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and
   AWS services and routes that data to targets such as Lambda, SNS, SQS, and more.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/eventbridge/
 created: '2024-01-15'
@@ -17,40 +30,156 @@ tags:
   - Integration
   - Serverless
 apis:
-  - name: Amazon EventBridge API
-    description: >-
-      API for creating and managing event buses, rules, targets, and connections for routing events across applications,
-      microservices, and SaaS integrations.
-    humanURL: https://aws.amazon.com/eventbridge/
-    baseURL: https://events.amazonaws.com
-    tags:
-      - Event Bus
-      - Event-Driven
-      - Events
-      - Serverless
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
-      - type: OpenAPI
-        url: openapi/amazon-eventbridge-openapi.yml
-      - type: AsyncAPI
-        url: asyncapi/amazon-eventbridge-asyncapi.yml
-      - type: APIReference
-        url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
-      - type: GettingStarted
-        url: https://aws.amazon.com/eventbridge/getting-started/
-      - type: Pricing
-        url: https://aws.amazon.com/eventbridge/pricing/
-      - type: FAQ
-        url: https://aws.amazon.com/eventbridge/faqs/
-      - type: JSONSchema
-        url: json-schema/amazon-eventbridge-create-archive-request-schema.json
-      - type: JSONSchema
-        url: json-schema/amazon-eventbridge-create-archive-response-schema.json
-      - type: JSONSchema
-        url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-eventbridge-context.jsonld
+- aid: amazon-eventbridge:amazon-eventbridge-archives-api
+  name: Amazon EventBridge Archives API
+  description: Operations for managing event archives.
+  humanURL: https://aws.amazon.com/eventbridge/
+  baseURL: https://events.amazonaws.com
+  tags:
+  - Archives
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eventbridge-archives-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
+  - type: AsyncAPI
+    url: asyncapi/amazon-eventbridge-asyncapi.yml
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/eventbridge/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/eventbridge/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/eventbridge/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-eventbridge-context.jsonld
+- aid: amazon-eventbridge:amazon-eventbridge-event-buses-api
+  name: Amazon EventBridge Event Buses API
+  description: Operations for managing event buses.
+  humanURL: https://aws.amazon.com/eventbridge/
+  baseURL: https://events.amazonaws.com
+  tags:
+  - Event Buses
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eventbridge-event-buses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
+  - type: AsyncAPI
+    url: asyncapi/amazon-eventbridge-asyncapi.yml
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/eventbridge/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/eventbridge/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/eventbridge/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-eventbridge-context.jsonld
+- aid: amazon-eventbridge:amazon-eventbridge-events-api
+  name: Amazon EventBridge Events API
+  description: Operations for putting events to EventBridge.
+  humanURL: https://aws.amazon.com/eventbridge/
+  baseURL: https://events.amazonaws.com
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eventbridge-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
+  - type: AsyncAPI
+    url: asyncapi/amazon-eventbridge-asyncapi.yml
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/eventbridge/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/eventbridge/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/eventbridge/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-eventbridge-context.jsonld
+- aid: amazon-eventbridge:amazon-eventbridge-rules-api
+  name: Amazon EventBridge Rules API
+  description: Operations for managing EventBridge rules.
+  humanURL: https://aws.amazon.com/eventbridge/
+  baseURL: https://events.amazonaws.com
+  tags:
+  - Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eventbridge-rules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
+  - type: AsyncAPI
+    url: asyncapi/amazon-eventbridge-asyncapi.yml
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/eventbridge/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/eventbridge/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/eventbridge/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-eventbridge-context.jsonld
+- aid: amazon-eventbridge:amazon-eventbridge-targets-api
+  name: Amazon EventBridge Targets API
+  description: Operations for managing rule targets.
+  humanURL: https://aws.amazon.com/eventbridge/
+  baseURL: https://events.amazonaws.com
+  tags:
+  - Targets
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eventbridge-targets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eventbridge/latest/userguide/
+  - type: AsyncAPI
+    url: asyncapi/amazon-eventbridge-asyncapi.yml
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/eventbridge/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/eventbridge/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/eventbridge/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-archive-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-eventbridge-create-event-bus-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-eventbridge-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-eventbridge-agentic-access.yml
