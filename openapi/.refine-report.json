@@ -1,0 +1,22 @@
+{
+  "provider": "amazon-eventbridge",
+  "sources": [
+    "amazon-eventbridge-archives-api-openapi.yml",
+    "amazon-eventbridge-event-buses-api-openapi.yml",
+    "amazon-eventbridge-events-api-openapi.yml",
+    "amazon-eventbridge-rules-api-openapi.yml",
+    "amazon-eventbridge-targets-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-eventbridge-archives-api-openapi.yml",
+    "amazon-eventbridge-event-buses-api-openapi.yml",
+    "amazon-eventbridge-events-api-openapi.yml",
+    "amazon-eventbridge-rules-api-openapi.yml",
+    "amazon-eventbridge-targets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
