@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EventBridge Archives Events API",
+    "version": "2015-10-07"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EventBridge Put Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends custom events to Amazon EventBridge so that they can be matched to rules."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

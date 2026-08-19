@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EventBridge Archives Event Buses API",
+    "version": "2015-10-07"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event Buses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EventBridge Create Event Bus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?CreateEventBus",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new event bus within your account."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge Describe Event Bus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?DescribeEventBus",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Displays details about an event bus in your account, including the default event bus."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge List Event Buses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?ListEventBuses",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists all the event buses in your account, including the default event bus."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge Delete Event Bus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?DeleteEventBus",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the specified custom event bus or partner event bus. The default event bus cannot be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

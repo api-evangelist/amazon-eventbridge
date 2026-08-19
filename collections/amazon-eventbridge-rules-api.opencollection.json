@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EventBridge Archives Rules API",
+    "version": "2015-10-07"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EventBridge Put Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?PutRule",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the specified rule. Rules are enabled by default or based on the provided State parameter."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge Describe Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?DescribeRule",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Describes the specified rule."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge List Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?ListRules",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names."
+        },
+        {
+          "info": {
+            "name": "Amazon EventBridge Delete Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.{region}.amazonaws.com/?DeleteRule",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the specified rule. Before you can delete the rule, you must remove all targets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
