@@ -26,6 +26,14 @@ tags:
   - AWS
   - Event Bus
   - Event-Driven
+  - Event
+  - Integration
+  - Serverless
+tags_raw:
+  - Amazon Web Services
+  - AWS
+  - Event Bus
+  - Event-Driven
   - Events
   - Integration
   - Serverless
@@ -96,6 +104,8 @@ apis:
   humanURL: https://aws.amazon.com/eventbridge/
   baseURL: https://events.amazonaws.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
