@@ -3,6 +3,18 @@ description: >-
   Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a
   variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and
   AWS services and routes that data to targets such as Lambda, SNS, SQS, and more.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
