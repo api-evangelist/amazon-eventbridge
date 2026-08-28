@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: eventbridgeApi
-  url: ../openapi/amazon-eventbridge-openapi.yml
+- name: eventBusesApi
+  url: ../openapi/amazon-eventbridge-event-buses-api-openapi.yml
+  type: openapi
+- name: rulesApi
+  url: ../openapi/amazon-eventbridge-rules-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: audit-bus-rules

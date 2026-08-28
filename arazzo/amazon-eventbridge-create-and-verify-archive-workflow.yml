@@ -10,8 +10,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: eventbridgeApi
-  url: ../openapi/amazon-eventbridge-openapi.yml
+- name: archivesApi
+  url: ../openapi/amazon-eventbridge-archives-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-and-verify-archive
