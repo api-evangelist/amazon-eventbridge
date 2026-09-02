@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon EventBridge Archives Rules API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
@@ -201,7 +201,68 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    X-Amz-Target-ListRules:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListRules
+    X-Amz-Target-PutRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutRule
+    X-Amz-Target-DeleteRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DeleteRule
+    X-Amz-Target-DescribeRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DescribeRule
   schemas:
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
+    DescribeRuleResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+        Description:
+          type: string
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
     ListRulesRequest:
       type: object
       properties:
@@ -213,6 +274,42 @@ components:
           type: string
         Limit:
           type: integer
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    PutRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+      - Name
     DescribeRuleRequest:
       type: object
       properties:
@@ -252,51 +349,6 @@ components:
         EventBusName:
           type: string
           description: The name or ARN of the event bus associated with the rule.
-    PutRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        EventPattern:
-          type: string
-        ScheduleExpression:
-          type: string
-        State:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-        RoleArn:
-          type: string
-        EventBusName:
-          type: string
-        Tags:
-          type: array
-          items:
-            type: object
-            properties:
-              Key:
-                type: string
-              Value:
-                type: string
-      required:
-      - Name
-    PutRuleResponse:
-      type: object
-      properties:
-        RuleArn:
-          type: string
-    ListRulesResponse:
-      type: object
-      properties:
-        Rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
-        NextToken:
-          type: string
     DeleteRuleRequest:
       type: object
       properties:
@@ -308,58 +360,6 @@ components:
           type: boolean
       required:
       - Name
-    DescribeRuleResponse:
-      type: object
-      properties:
-        Name:
-          type: string
-        Arn:
-          type: string
-        EventPattern:
-          type: string
-        ScheduleExpression:
-          type: string
-        State:
-          type: string
-        Description:
-          type: string
-        RoleArn:
-          type: string
-        EventBusName:
-          type: string
-  parameters:
-    X-Amz-Target-PutRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutRule
-    X-Amz-Target-DescribeRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DescribeRule
-    X-Amz-Target-DeleteRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DeleteRule
-    X-Amz-Target-ListRules:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListRules
   securitySchemes:
     aws_sigv4:
       type: apiKey

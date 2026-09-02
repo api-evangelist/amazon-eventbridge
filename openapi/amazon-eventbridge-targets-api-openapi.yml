@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon EventBridge Archives Targets API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
@@ -166,6 +166,31 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutTargets
+    X-Amz-Target-ListTargetsByRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListTargetsByRule
+    X-Amz-Target-RemoveTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.RemoveTargets
   schemas:
     RemoveTargetsResponse:
       type: object
@@ -199,19 +224,15 @@ components:
       required:
       - Rule
       - Ids
-    ListTargetsByRuleRequest:
+    ListTargetsByRuleResponse:
       type: object
       properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
         NextToken:
           type: string
-        Limit:
-          type: integer
-      required:
-      - Rule
     PutTargetsRequest:
       type: object
       properties:
@@ -226,15 +247,35 @@ components:
       required:
       - Rule
       - Targets
-    ListTargetsByRuleResponse:
+    ListTargetsByRuleRequest:
       type: object
       properties:
-        Targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
+        Rule:
+          type: string
+        EventBusName:
+          type: string
         NextToken:
           type: string
+        Limit:
+          type: integer
+      required:
+      - Rule
+    PutTargetsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+        FailedEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              TargetId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
     Target:
       type: object
       properties:
@@ -266,47 +307,6 @@ components:
       required:
       - Id
       - Arn
-    PutTargetsResponse:
-      type: object
-      properties:
-        FailedEntryCount:
-          type: integer
-        FailedEntries:
-          type: array
-          items:
-            type: object
-            properties:
-              TargetId:
-                type: string
-              ErrorCode:
-                type: string
-              ErrorMessage:
-                type: string
-  parameters:
-    X-Amz-Target-ListTargetsByRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListTargetsByRule
-    X-Amz-Target-PutTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutTargets
-    X-Amz-Target-RemoveTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.RemoveTargets
   securitySchemes:
     aws_sigv4:
       type: apiKey

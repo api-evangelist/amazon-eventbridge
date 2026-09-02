@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon EventBridge Archives API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
@@ -126,19 +126,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListArchivesRequest:
+    CreateArchiveRequest:
       type: object
       properties:
-        NamePrefix:
+        ArchiveName:
           type: string
         EventSourceArn:
           type: string
-        State:
+        Description:
           type: string
-        NextToken:
+        EventPattern:
           type: string
-        Limit:
+        RetentionDays:
           type: integer
+      required:
+      - ArchiveName
+      - EventSourceArn
     ListArchivesResponse:
       type: object
       properties:
@@ -174,22 +177,19 @@ components:
         CreationTime:
           type: string
           format: date-time
-    CreateArchiveRequest:
+    ListArchivesRequest:
       type: object
       properties:
-        ArchiveName:
+        NamePrefix:
           type: string
         EventSourceArn:
           type: string
-        Description:
+        State:
           type: string
-        EventPattern:
+        NextToken:
           type: string
-        RetentionDays:
+        Limit:
           type: integer
-      required:
-      - ArchiveName
-      - EventSourceArn
   parameters:
     X-Amz-Target-ListArchives:
       name: X-Amz-Target
