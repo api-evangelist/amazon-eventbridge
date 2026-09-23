@@ -125,23 +125,24 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    X-Amz-Target-CreateArchive:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateArchive
+    X-Amz-Target-ListArchives:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListArchives
   schemas:
-    CreateArchiveRequest:
-      type: object
-      properties:
-        ArchiveName:
-          type: string
-        EventSourceArn:
-          type: string
-        Description:
-          type: string
-        EventPattern:
-          type: string
-        RetentionDays:
-          type: integer
-      required:
-      - ArchiveName
-      - EventSourceArn
     ListArchivesResponse:
       type: object
       properties:
@@ -167,16 +168,22 @@ components:
                 format: date-time
         NextToken:
           type: string
-    CreateArchiveResponse:
+    CreateArchiveRequest:
       type: object
       properties:
-        ArchiveArn:
+        ArchiveName:
           type: string
-        State:
+        EventSourceArn:
           type: string
-        CreationTime:
+        Description:
           type: string
-          format: date-time
+        EventPattern:
+          type: string
+        RetentionDays:
+          type: integer
+      required:
+      - ArchiveName
+      - EventSourceArn
     ListArchivesRequest:
       type: object
       properties:
@@ -190,23 +197,16 @@ components:
           type: string
         Limit:
           type: integer
-  parameters:
-    X-Amz-Target-ListArchives:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListArchives
-    X-Amz-Target-CreateArchive:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.CreateArchive
+    CreateArchiveResponse:
+      type: object
+      properties:
+        ArchiveArn:
+          type: string
+        State:
+          type: string
+        CreationTime:
+          type: string
+          format: date-time
   securitySchemes:
     aws_sigv4:
       type: apiKey

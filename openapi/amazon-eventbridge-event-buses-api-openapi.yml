@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EventBridge Archives Event Buses API
+  title: Amazon EventBridge Event Buses API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
   version: '2015-10-07'
   contact:
@@ -193,7 +193,90 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    ListEventBusesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    CreateEventBusResponse:
+      type: object
+      properties:
+        EventBusArn:
+          type: string
+    EventBus:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the event bus.
+        Arn:
+          type: string
+          description: The ARN of the event bus.
+        Policy:
+          type: string
+          description: The permissions policy of the event bus.
+    DescribeEventBusResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        Policy:
+          type: string
+    CreateEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventSourceName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+      - Name
+    ListEventBusesResponse:
+      type: object
+      properties:
+        EventBuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventBus'
+        NextToken:
+          type: string
+    DescribeEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+    DeleteEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+      required:
+      - Name
   parameters:
+    X-Amz-Target-ListEventBuses:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListEventBuses
     X-Amz-Target-DeleteEventBus:
       name: X-Amz-Target
       in: header
@@ -218,89 +301,6 @@ components:
         type: string
         enum:
         - AWSEvents.DescribeEventBus
-    X-Amz-Target-ListEventBuses:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListEventBuses
-  schemas:
-    DescribeEventBusResponse:
-      type: object
-      properties:
-        Name:
-          type: string
-        Arn:
-          type: string
-        Policy:
-          type: string
-    DeleteEventBusRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-      required:
-      - Name
-    CreateEventBusResponse:
-      type: object
-      properties:
-        EventBusArn:
-          type: string
-    ListEventBusesResponse:
-      type: object
-      properties:
-        EventBuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventBus'
-        NextToken:
-          type: string
-    EventBus:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: The name of the event bus.
-        Arn:
-          type: string
-          description: The ARN of the event bus.
-        Policy:
-          type: string
-          description: The permissions policy of the event bus.
-    CreateEventBusRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventSourceName:
-          type: string
-        Tags:
-          type: array
-          items:
-            type: object
-            properties:
-              Key:
-                type: string
-              Value:
-                type: string
-      required:
-      - Name
-    DescribeEventBusRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-    ListEventBusesRequest:
-      type: object
-      properties:
-        NamePrefix:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
   securitySchemes:
     aws_sigv4:
       type: apiKey

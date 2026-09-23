@@ -1,11 +1,7 @@
 {
   "provider": "amazon-eventbridge",
   "sources": [
-    "amazon-eventbridge-archives-api-openapi.yml",
-    "amazon-eventbridge-event-buses-api-openapi.yml",
-    "amazon-eventbridge-events-api-openapi.yml",
-    "amazon-eventbridge-rules-api-openapi.yml",
-    "amazon-eventbridge-targets-api-openapi.yml"
+    "_original/amazon-eventbridge-openapi.yml"
   ],
   "outputs": [
     "amazon-eventbridge-archives-api-openapi.yml",
@@ -18,7 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-eventbridge-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-eventbridge-archives-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-eventbridge-event-buses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-eventbridge-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-eventbridge-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-eventbridge-targets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

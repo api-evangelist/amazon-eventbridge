@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EventBridge Archives Events API
+  title: Amazon EventBridge Events API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
   version: '2015-10-07'
   contact:
@@ -75,16 +75,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PutEventsRequest:
-      type: object
-      properties:
-        Entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-          description: The entry that defines an event in your system.
-      required:
-      - Entries
     PutEventsResponse:
       type: object
       properties:
@@ -102,6 +92,16 @@ components:
                 type: string
               ErrorMessage:
                 type: string
+    PutEventsRequest:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          description: The entry that defines an event in your system.
+      required:
+      - Entries
     Event:
       type: object
       properties:

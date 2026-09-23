@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EventBridge Archives Targets API
+  title: Amazon EventBridge Targets API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
   version: '2015-10-07'
   contact:
@@ -166,32 +166,37 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    X-Amz-Target-PutTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutTargets
-    X-Amz-Target-ListTargetsByRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListTargetsByRule
-    X-Amz-Target-RemoveTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.RemoveTargets
   schemas:
+    PutTargetsRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+      required:
+      - Rule
+      - Targets
+    PutTargetsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+        FailedEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              TargetId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
     RemoveTargetsResponse:
       type: object
       properties:
@@ -233,49 +238,6 @@ components:
             $ref: '#/components/schemas/Target'
         NextToken:
           type: string
-    PutTargetsRequest:
-      type: object
-      properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
-        Targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-      required:
-      - Rule
-      - Targets
-    ListTargetsByRuleRequest:
-      type: object
-      properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-      required:
-      - Rule
-    PutTargetsResponse:
-      type: object
-      properties:
-        FailedEntryCount:
-          type: integer
-        FailedEntries:
-          type: array
-          items:
-            type: object
-            properties:
-              TargetId:
-                type: string
-              ErrorCode:
-                type: string
-              ErrorMessage:
-                type: string
     Target:
       type: object
       properties:
@@ -307,6 +269,44 @@ components:
       required:
       - Id
       - Arn
+    ListTargetsByRuleRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+      required:
+      - Rule
+  parameters:
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutTargets
+    X-Amz-Target-RemoveTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.RemoveTargets
+    X-Amz-Target-ListTargetsByRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListTargetsByRule
   securitySchemes:
     aws_sigv4:
       type: apiKey

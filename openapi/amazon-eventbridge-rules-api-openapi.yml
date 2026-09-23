@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EventBridge Archives Rules API
+  title: Amazon EventBridge Rules API
   description: Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as AWS Lambda, Amazon SNS, Amazon SQS, and more.
   version: '2015-10-07'
   contact:
@@ -201,49 +201,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    X-Amz-Target-ListRules:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListRules
-    X-Amz-Target-PutRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutRule
-    X-Amz-Target-DeleteRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DeleteRule
-    X-Amz-Target-DescribeRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DescribeRule
   schemas:
-    ListRulesResponse:
-      type: object
-      properties:
-        Rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
-        NextToken:
-          type: string
     DescribeRuleResponse:
       type: object
       properties:
@@ -263,6 +221,70 @@ components:
           type: string
         EventBusName:
           type: string
+    Rule:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the rule.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the rule.
+        EventPattern:
+          type: string
+          description: The event pattern of the rule.
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: The state of the rule.
+        Description:
+          type: string
+          description: The description of the rule.
+        ScheduleExpression:
+          type: string
+          description: The scheduling expression (e.g., cron or rate expression).
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus associated with the rule.
+    DescribeRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+      required:
+      - Name
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    DeleteRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+        Force:
+          type: boolean
+      required:
+      - Name
     ListRulesRequest:
       type: object
       properties:
@@ -274,11 +296,6 @@ components:
           type: string
         Limit:
           type: integer
-    PutRuleResponse:
-      type: object
-      properties:
-        RuleArn:
-          type: string
     PutRuleRequest:
       type: object
       properties:
@@ -310,56 +327,39 @@ components:
                 type: string
       required:
       - Name
-    DescribeRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-      required:
-      - Name
-    Rule:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: The name of the rule.
-        Arn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the rule.
-        EventPattern:
-          type: string
-          description: The event pattern of the rule.
-        State:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: The state of the rule.
-        Description:
-          type: string
-          description: The description of the rule.
-        ScheduleExpression:
-          type: string
-          description: The scheduling expression (e.g., cron or rate expression).
-        RoleArn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the IAM role.
-        EventBusName:
-          type: string
-          description: The name or ARN of the event bus associated with the rule.
-    DeleteRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-        Force:
-          type: boolean
-      required:
-      - Name
+  parameters:
+    X-Amz-Target-DeleteRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DeleteRule
+    X-Amz-Target-ListRules:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListRules
+    X-Amz-Target-DescribeRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DescribeRule
+    X-Amz-Target-PutRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutRule
   securitySchemes:
     aws_sigv4:
       type: apiKey
