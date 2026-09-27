@@ -167,6 +167,46 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Target:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The ID of the target.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the target.
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        Input:
+          type: string
+          description: Valid JSON text passed to the target.
+        InputPath:
+          type: string
+          description: JSONPath to extract from the event and send to the target.
+        InputTransformer:
+          type: object
+          properties:
+            InputPathsMap:
+              type: object
+              additionalProperties:
+                type: string
+            InputTemplate:
+              type: string
+          description: Settings to transform input before sending to the target.
+      required:
+      - Id
+      - Arn
+    ListTargetsByRuleResponse:
+      type: object
+      properties:
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        NextToken:
+          type: string
     PutTargetsRequest:
       type: object
       properties:
@@ -181,6 +221,19 @@ components:
       required:
       - Rule
       - Targets
+    ListTargetsByRuleRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+      required:
+      - Rule
     PutTargetsResponse:
       type: object
       properties:
@@ -229,68 +282,7 @@ components:
       required:
       - Rule
       - Ids
-    ListTargetsByRuleResponse:
-      type: object
-      properties:
-        Targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-        NextToken:
-          type: string
-    Target:
-      type: object
-      properties:
-        Id:
-          type: string
-          description: The ID of the target.
-        Arn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the target.
-        RoleArn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the IAM role.
-        Input:
-          type: string
-          description: Valid JSON text passed to the target.
-        InputPath:
-          type: string
-          description: JSONPath to extract from the event and send to the target.
-        InputTransformer:
-          type: object
-          properties:
-            InputPathsMap:
-              type: object
-              additionalProperties:
-                type: string
-            InputTemplate:
-              type: string
-          description: Settings to transform input before sending to the target.
-      required:
-      - Id
-      - Arn
-    ListTargetsByRuleRequest:
-      type: object
-      properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-      required:
-      - Rule
   parameters:
-    X-Amz-Target-PutTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutTargets
     X-Amz-Target-RemoveTargets:
       name: X-Amz-Target
       in: header
@@ -299,6 +291,14 @@ components:
         type: string
         enum:
         - AWSEvents.RemoveTargets
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutTargets
     X-Amz-Target-ListTargetsByRule:
       name: X-Amz-Target
       in: header

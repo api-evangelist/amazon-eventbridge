@@ -204,7 +204,7 @@ apis:
     url: json-ld/amazon-eventbridge-context.jsonld
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/eventbridge/
 - type: AgenticAccess
   url: agentic-access/amazon-eventbridge-agentic-access.yml
 - type: TrustCenter
@@ -323,5 +323,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

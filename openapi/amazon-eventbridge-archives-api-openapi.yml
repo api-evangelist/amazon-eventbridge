@@ -125,23 +125,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    X-Amz-Target-CreateArchive:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.CreateArchive
-    X-Amz-Target-ListArchives:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListArchives
   schemas:
     ListArchivesResponse:
       type: object
@@ -184,6 +167,16 @@ components:
       required:
       - ArchiveName
       - EventSourceArn
+    CreateArchiveResponse:
+      type: object
+      properties:
+        ArchiveArn:
+          type: string
+        State:
+          type: string
+        CreationTime:
+          type: string
+          format: date-time
     ListArchivesRequest:
       type: object
       properties:
@@ -197,16 +190,23 @@ components:
           type: string
         Limit:
           type: integer
-    CreateArchiveResponse:
-      type: object
-      properties:
-        ArchiveArn:
-          type: string
-        State:
-          type: string
-        CreationTime:
-          type: string
-          format: date-time
+  parameters:
+    X-Amz-Target-CreateArchive:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateArchive
+    X-Amz-Target-ListArchives:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListArchives
   securitySchemes:
     aws_sigv4:
       type: apiKey

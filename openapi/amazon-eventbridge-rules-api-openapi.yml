@@ -202,24 +202,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeRuleResponse:
+    ListRulesRequest:
       type: object
       properties:
-        Name:
-          type: string
-        Arn:
-          type: string
-        EventPattern:
-          type: string
-        ScheduleExpression:
-          type: string
-        State:
-          type: string
-        Description:
-          type: string
-        RoleArn:
+        NamePrefix:
           type: string
         EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
           type: string
     Rule:
       type: object
@@ -260,19 +266,24 @@ components:
           type: string
       required:
       - Name
-    ListRulesResponse:
+    DescribeRuleResponse:
       type: object
       properties:
-        Rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
-        NextToken:
+        Name:
           type: string
-    PutRuleResponse:
-      type: object
-      properties:
-        RuleArn:
+        Arn:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+        Description:
+          type: string
+        RoleArn:
+          type: string
+        EventBusName:
           type: string
     DeleteRuleRequest:
       type: object
@@ -285,17 +296,6 @@ components:
           type: boolean
       required:
       - Name
-    ListRulesRequest:
-      type: object
-      properties:
-        NamePrefix:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
     PutRuleRequest:
       type: object
       properties:
@@ -328,14 +328,6 @@ components:
       required:
       - Name
   parameters:
-    X-Amz-Target-DeleteRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DeleteRule
     X-Amz-Target-ListRules:
       name: X-Amz-Target
       in: header
@@ -344,14 +336,6 @@ components:
         type: string
         enum:
         - AWSEvents.ListRules
-    X-Amz-Target-DescribeRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.DescribeRule
     X-Amz-Target-PutRule:
       name: X-Amz-Target
       in: header
@@ -360,6 +344,22 @@ components:
         type: string
         enum:
         - AWSEvents.PutRule
+    X-Amz-Target-DescribeRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DescribeRule
+    X-Amz-Target-DeleteRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.DeleteRule
   securitySchemes:
     aws_sigv4:
       type: apiKey
