@@ -166,7 +166,61 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutTargets
+    X-Amz-Target-ListTargetsByRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListTargetsByRule
+    X-Amz-Target-RemoveTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.RemoveTargets
   schemas:
+    ListTargetsByRuleRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+      required:
+      - Rule
+    PutTargetsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+        FailedEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              TargetId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
     Target:
       type: object
       properties:
@@ -198,15 +252,6 @@ components:
       required:
       - Id
       - Arn
-    ListTargetsByRuleResponse:
-      type: object
-      properties:
-        Targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-        NextToken:
-          type: string
     PutTargetsRequest:
       type: object
       properties:
@@ -221,35 +266,6 @@ components:
       required:
       - Rule
       - Targets
-    ListTargetsByRuleRequest:
-      type: object
-      properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-      required:
-      - Rule
-    PutTargetsResponse:
-      type: object
-      properties:
-        FailedEntryCount:
-          type: integer
-        FailedEntries:
-          type: array
-          items:
-            type: object
-            properties:
-              TargetId:
-                type: string
-              ErrorCode:
-                type: string
-              ErrorMessage:
-                type: string
     RemoveTargetsResponse:
       type: object
       properties:
@@ -282,31 +298,15 @@ components:
       required:
       - Rule
       - Ids
-  parameters:
-    X-Amz-Target-RemoveTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.RemoveTargets
-    X-Amz-Target-PutTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutTargets
-    X-Amz-Target-ListTargetsByRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListTargetsByRule
+    ListTargetsByRuleResponse:
+      type: object
+      properties:
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        NextToken:
+          type: string
   securitySchemes:
     aws_sigv4:
       type: apiKey

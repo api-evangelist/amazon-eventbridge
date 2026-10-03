@@ -125,7 +125,53 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    X-Amz-Target-ListArchives:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListArchives
+    X-Amz-Target-CreateArchive:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateArchive
   schemas:
+    CreateArchiveRequest:
+      type: object
+      properties:
+        ArchiveName:
+          type: string
+        EventSourceArn:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        RetentionDays:
+          type: integer
+      required:
+      - ArchiveName
+      - EventSourceArn
+    ListArchivesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventSourceArn:
+          type: string
+        State:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
     ListArchivesResponse:
       type: object
       properties:
@@ -151,22 +197,6 @@ components:
                 format: date-time
         NextToken:
           type: string
-    CreateArchiveRequest:
-      type: object
-      properties:
-        ArchiveName:
-          type: string
-        EventSourceArn:
-          type: string
-        Description:
-          type: string
-        EventPattern:
-          type: string
-        RetentionDays:
-          type: integer
-      required:
-      - ArchiveName
-      - EventSourceArn
     CreateArchiveResponse:
       type: object
       properties:
@@ -177,36 +207,6 @@ components:
         CreationTime:
           type: string
           format: date-time
-    ListArchivesRequest:
-      type: object
-      properties:
-        NamePrefix:
-          type: string
-        EventSourceArn:
-          type: string
-        State:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-  parameters:
-    X-Amz-Target-CreateArchive:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.CreateArchive
-    X-Amz-Target-ListArchives:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListArchives
   securitySchemes:
     aws_sigv4:
       type: apiKey

@@ -74,33 +74,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    X-Amz-Target-PutEvents:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutEvents
   schemas:
-    PutEventsResponse:
-      type: object
-      properties:
-        FailedEntryCount:
-          type: integer
-          description: The number of failed entries.
-        Entries:
-          type: array
-          items:
-            type: object
-            properties:
-              EventId:
-                type: string
-              ErrorCode:
-                type: string
-              ErrorMessage:
-                type: string
     Event:
       type: object
       properties:
@@ -132,6 +106,23 @@ components:
       - Source
       - DetailType
       - Detail
+    PutEventsResponse:
+      type: object
+      properties:
+        FailedEntryCount:
+          type: integer
+          description: The number of failed entries.
+        Entries:
+          type: array
+          items:
+            type: object
+            properties:
+              EventId:
+                type: string
+              ErrorCode:
+                type: string
+              ErrorMessage:
+                type: string
     PutEventsRequest:
       type: object
       properties:
@@ -142,6 +133,15 @@ components:
           description: The entry that defines an event in your system.
       required:
       - Entries
+  parameters:
+    X-Amz-Target-PutEvents:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutEvents
   securitySchemes:
     aws_sigv4:
       type: apiKey

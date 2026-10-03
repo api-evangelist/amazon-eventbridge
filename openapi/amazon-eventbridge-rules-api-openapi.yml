@@ -202,100 +202,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListRulesRequest:
-      type: object
-      properties:
-        NamePrefix:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-    PutRuleResponse:
-      type: object
-      properties:
-        RuleArn:
-          type: string
-    ListRulesResponse:
-      type: object
-      properties:
-        Rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
-        NextToken:
-          type: string
-    Rule:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: The name of the rule.
-        Arn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the rule.
-        EventPattern:
-          type: string
-          description: The event pattern of the rule.
-        State:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: The state of the rule.
-        Description:
-          type: string
-          description: The description of the rule.
-        ScheduleExpression:
-          type: string
-          description: The scheduling expression (e.g., cron or rate expression).
-        RoleArn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the IAM role.
-        EventBusName:
-          type: string
-          description: The name or ARN of the event bus associated with the rule.
-    DescribeRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-      required:
-      - Name
-    DescribeRuleResponse:
-      type: object
-      properties:
-        Name:
-          type: string
-        Arn:
-          type: string
-        EventPattern:
-          type: string
-        ScheduleExpression:
-          type: string
-        State:
-          type: string
-        Description:
-          type: string
-        RoleArn:
-          type: string
-        EventBusName:
-          type: string
-    DeleteRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-        Force:
-          type: boolean
-      required:
-      - Name
     PutRuleRequest:
       type: object
       properties:
@@ -327,23 +233,101 @@ components:
                 type: string
       required:
       - Name
+    Rule:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: The name of the rule.
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the rule.
+        EventPattern:
+          type: string
+          description: The event pattern of the rule.
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: The state of the rule.
+        Description:
+          type: string
+          description: The description of the rule.
+        ScheduleExpression:
+          type: string
+          description: The scheduling expression (e.g., cron or rate expression).
+        RoleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+        EventBusName:
+          type: string
+          description: The name or ARN of the event bus associated with the rule.
+    DeleteRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+        Force:
+          type: boolean
+      required:
+      - Name
+    PutRuleResponse:
+      type: object
+      properties:
+        RuleArn:
+          type: string
+    DescribeRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        EventBusName:
+          type: string
+      required:
+      - Name
+    ListRulesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+    DescribeRuleResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        Arn:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+        Description:
+          type: string
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
   parameters:
-    X-Amz-Target-ListRules:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListRules
-    X-Amz-Target-PutRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutRule
     X-Amz-Target-DescribeRule:
       name: X-Amz-Target
       in: header
@@ -360,6 +344,22 @@ components:
         type: string
         enum:
         - AWSEvents.DeleteRule
+    X-Amz-Target-ListRules:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListRules
+    X-Amz-Target-PutRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutRule
   securitySchemes:
     aws_sigv4:
       type: apiKey
