@@ -166,45 +166,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    X-Amz-Target-PutTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.PutTargets
-    X-Amz-Target-ListTargetsByRule:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListTargetsByRule
-    X-Amz-Target-RemoveTargets:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.RemoveTargets
   schemas:
-    ListTargetsByRuleRequest:
-      type: object
-      properties:
-        Rule:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
-      required:
-      - Rule
     PutTargetsResponse:
       type: object
       properties:
@@ -252,6 +214,15 @@ components:
       required:
       - Id
       - Arn
+    ListTargetsByRuleResponse:
+      type: object
+      properties:
+        Targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        NextToken:
+          type: string
     PutTargetsRequest:
       type: object
       properties:
@@ -282,6 +253,19 @@ components:
                 type: string
               ErrorMessage:
                 type: string
+    ListTargetsByRuleRequest:
+      type: object
+      properties:
+        Rule:
+          type: string
+        EventBusName:
+          type: string
+        NextToken:
+          type: string
+        Limit:
+          type: integer
+      required:
+      - Rule
     RemoveTargetsRequest:
       type: object
       properties:
@@ -298,15 +282,31 @@ components:
       required:
       - Rule
       - Ids
-    ListTargetsByRuleResponse:
-      type: object
-      properties:
-        Targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-        NextToken:
-          type: string
+  parameters:
+    X-Amz-Target-RemoveTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.RemoveTargets
+    X-Amz-Target-PutTargets:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.PutTargets
+    X-Amz-Target-ListTargetsByRule:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListTargetsByRule
   securitySchemes:
     aws_sigv4:
       type: apiKey

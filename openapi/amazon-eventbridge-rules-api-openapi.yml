@@ -202,35 +202,33 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PutRuleRequest:
+    ListRulesResponse:
+      type: object
+      properties:
+        Rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+        NextToken:
+          type: string
+    DeleteRuleRequest:
       type: object
       properties:
         Name:
           type: string
-        Description:
+        EventBusName:
           type: string
-        EventPattern:
-          type: string
-        ScheduleExpression:
-          type: string
-        State:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-        RoleArn:
+        Force:
+          type: boolean
+      required:
+      - Name
+    DescribeRuleRequest:
+      type: object
+      properties:
+        Name:
           type: string
         EventBusName:
           type: string
-        Tags:
-          type: array
-          items:
-            type: object
-            properties:
-              Key:
-                type: string
-              Value:
-                type: string
       required:
       - Name
     Rule:
@@ -263,42 +261,6 @@ components:
         EventBusName:
           type: string
           description: The name or ARN of the event bus associated with the rule.
-    DeleteRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-        Force:
-          type: boolean
-      required:
-      - Name
-    PutRuleResponse:
-      type: object
-      properties:
-        RuleArn:
-          type: string
-    DescribeRuleRequest:
-      type: object
-      properties:
-        Name:
-          type: string
-        EventBusName:
-          type: string
-      required:
-      - Name
-    ListRulesRequest:
-      type: object
-      properties:
-        NamePrefix:
-          type: string
-        EventBusName:
-          type: string
-        NextToken:
-          type: string
-        Limit:
-          type: integer
     DescribeRuleResponse:
       type: object
       properties:
@@ -318,15 +280,53 @@ components:
           type: string
         EventBusName:
           type: string
-    ListRulesResponse:
+    PutRuleResponse:
       type: object
       properties:
-        Rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
+        RuleArn:
+          type: string
+    ListRulesRequest:
+      type: object
+      properties:
+        NamePrefix:
+          type: string
+        EventBusName:
+          type: string
         NextToken:
           type: string
+        Limit:
+          type: integer
+    PutRuleRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        EventPattern:
+          type: string
+        ScheduleExpression:
+          type: string
+        State:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+        RoleArn:
+          type: string
+        EventBusName:
+          type: string
+        Tags:
+          type: array
+          items:
+            type: object
+            properties:
+              Key:
+                type: string
+              Value:
+                type: string
+      required:
+      - Name
   parameters:
     X-Amz-Target-DescribeRule:
       name: X-Amz-Target

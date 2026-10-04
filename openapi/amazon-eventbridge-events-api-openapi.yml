@@ -106,6 +106,16 @@ components:
       - Source
       - DetailType
       - Detail
+    PutEventsRequest:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          description: The entry that defines an event in your system.
+      required:
+      - Entries
     PutEventsResponse:
       type: object
       properties:
@@ -123,16 +133,6 @@ components:
                 type: string
               ErrorMessage:
                 type: string
-    PutEventsRequest:
-      type: object
-      properties:
-        Entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-          description: The entry that defines an event in your system.
-      required:
-      - Entries
   parameters:
     X-Amz-Target-PutEvents:
       name: X-Amz-Target
