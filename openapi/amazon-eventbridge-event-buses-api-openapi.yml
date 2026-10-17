@@ -194,6 +194,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateEventBusResponse:
+      type: object
+      properties:
+        EventBusArn:
+          type: string
     ListEventBusesRequest:
       type: object
       properties:
@@ -203,15 +208,6 @@ components:
           type: string
         Limit:
           type: integer
-    ListEventBusesResponse:
-      type: object
-      properties:
-        EventBuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventBus'
-        NextToken:
-          type: string
     CreateEventBusRequest:
       type: object
       properties:
@@ -230,11 +226,6 @@ components:
                 type: string
       required:
       - Name
-    DescribeEventBusRequest:
-      type: object
-      properties:
-        Name:
-          type: string
     EventBus:
       type: object
       properties:
@@ -247,6 +238,13 @@ components:
         Policy:
           type: string
           description: The permissions policy of the event bus.
+    DeleteEventBusRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+      required:
+      - Name
     DescribeEventBusResponse:
       type: object
       properties:
@@ -256,27 +254,21 @@ components:
           type: string
         Policy:
           type: string
-    CreateEventBusResponse:
+    ListEventBusesResponse:
       type: object
       properties:
-        EventBusArn:
+        EventBuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventBus'
+        NextToken:
           type: string
-    DeleteEventBusRequest:
+    DescribeEventBusRequest:
       type: object
       properties:
         Name:
           type: string
-      required:
-      - Name
   parameters:
-    X-Amz-Target-CreateEventBus:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.CreateEventBus
     X-Amz-Target-DescribeEventBus:
       name: X-Amz-Target
       in: header
@@ -285,14 +277,6 @@ components:
         type: string
         enum:
         - AWSEvents.DescribeEventBus
-    X-Amz-Target-ListEventBuses:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - AWSEvents.ListEventBuses
     X-Amz-Target-DeleteEventBus:
       name: X-Amz-Target
       in: header
@@ -301,6 +285,22 @@ components:
         type: string
         enum:
         - AWSEvents.DeleteEventBus
+    X-Amz-Target-ListEventBuses:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.ListEventBuses
+    X-Amz-Target-CreateEventBus:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - AWSEvents.CreateEventBus
   securitySchemes:
     aws_sigv4:
       type: apiKey
