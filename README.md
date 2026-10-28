@@ -1,4 +1,4 @@
-# Amazon EventBridge (amazon-eventbridge)
+# Amazon EventBridge
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,84 +66,288 @@
 
 Amazon EventBridge is a serverless event bus service that makes it easy to connect your applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your own applications, SaaS applications, and AWS services and routes that data to targets such as Lambda, SNS, SQS, and more.
 
-**APIs.json:** [https://aws.amazon.com/eventbridge/](https://aws.amazon.com/eventbridge/)
+**Areas:** Amazon Web Services · AWS · Event Bus · Event-Driven · Event · Integration · Serverless
 
-## Tags
+## Amazon EventBridge on APIs.io
 
-- Amazon Web Services
-- AWS
-- Event Bus
-- Event-Driven
-- Events
-- Integration
-- Serverless
+Everything profiled for Amazon EventBridge is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-eventbridge/](https://apis.io/providers/amazon-eventbridge/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (12)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+- [Amazon EventBridge Archives API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-archives-api/) — Operations for managing event archives.
+- [Amazon EventBridge Event Buses API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-event-buses-api/) — Operations for managing event buses.
+- [Amazon EventBridge Events API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-events-api/) — Operations for putting events to EventBridge.
+- [Amazon EventBridge Rules API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-rules-api/) — Operations for managing EventBridge rules.
+- [Amazon EventBridge Targets API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-targets-api/) — Operations for managing rule targets.
+- [Amazon EventBridge Eventbridge Api Destination API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-api-destination-api/) — The Eventbridge Api Destination API from Amazon EventBridge — 5 operation(s) for eventbridge api destination.
+- [Amazon EventBridge Eventbridge Connection API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-connection-api/) — The Eventbridge Connection API from Amazon EventBridge — 5 operation(s) for eventbridge connection.
+- [Amazon EventBridge Eventbridge Endpoint API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-endpoint-api/) — The Eventbridge Endpoint API from Amazon EventBridge — 5 operation(s) for eventbridge endpoint.
+- [Amazon EventBridge Eventbridge Event Bus API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-event-bus-api/) — The Eventbridge Event Bus API from Amazon EventBridge — 4 operation(s) for eventbridge event bus.
+- [Amazon EventBridge Eventbridge Operations API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-operations-api/) — The Eventbridge Operations API from Amazon EventBridge — 14 operation(s) for eventbridge operations.
+- [Amazon EventBridge Eventbridge Partner Event Source API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-partner-event-source-api/) — The Eventbridge Partner Event Source API from Amazon EventBridge — 4 operation(s) for eventbridge partner event source.
+- [Amazon EventBridge Eventbridge Replay API](https://apis.io/apis/amazon-eventbridge/amazon-eventbridge-replay-api/) — The Eventbridge Replay API from Amazon EventBridge — 4 operation(s) for eventbridge replay.
 
-## APIs
+### Published properties
 
-### Amazon EventBridge API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-API for creating and managing event buses, rules, targets, and connections for routing events across applications, microservices, and SaaS integrations.
+#### Arazzo workflows (9)
 
-- **Human URL:** [https://aws.amazon.com/eventbridge/](https://aws.amazon.com/eventbridge/)
-- **Base URL:** `https://events.amazonaws.com`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [Amazon EventBridge Archive Event Bus](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-archive-event-bus-workflow/)
+- [Amazon EventBridge Audit Bus Rules](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-audit-bus-rules-workflow/)
+- [Amazon EventBridge Create and Verify Archive](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-create-and-verify-archive-workflow/)
+- [Amazon EventBridge Create Rule with Targets](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-create-rule-with-targets-workflow/)
+- [Amazon EventBridge Decommission Rule](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-decommission-rule-workflow/)
+- [Amazon EventBridge Inspect Rule and Targets](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-inspect-rule-and-targets-workflow/)
+- [Amazon EventBridge Provision Event Bus Routing](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-provision-event-bus-routing-workflow/)
+- [Amazon EventBridge Route and Emit Event](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-route-and-emit-event-workflow/)
+- [Amazon EventBridge Teardown Event Bus](https://apis.io/arazzos/amazon-eventbridge/amazon-eventbridge-teardown-event-bus-workflow/)
 
-- Event Bus
-- Event-Driven
-- Events
-- Serverless
+#### AsyncAPI (1)
 
-#### Properties
+Event-driven and webhook contracts.
 
-- [Documentation](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
-- [OpenAPI](openapi/amazon-eventbridge-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-eventbridge.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-eventbridge.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/amazon-eventbridge-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [API Reference](https://docs.aws.amazon.com/eventbridge/latest/APIReference/)
-- [Getting Started](https://aws.amazon.com/eventbridge/getting-started/)
-- [Pricing](https://aws.amazon.com/eventbridge/pricing/)
-- [F A Q](https://aws.amazon.com/eventbridge/faqs/)
-- [JSON Schema](json-schema/amazon-eventbridge-create-archive-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-eventbridge-create-archive-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-eventbridge-create-event-bus-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/amazon-eventbridge-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Amazon EventBridge Event Delivery](https://apis.io/asyncapis/amazon-eventbridge/amazon-eventbridge-asyncapi/)
 
-## Common Properties
+#### Event channels (8)
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://aws.amazon.com/)
-- [Developer Portal](https://aws.amazon.com/eventbridge/)
+Individual events and webhooks the provider emits.
+
+- [events/custom/{eventBusName}](https://apis.io/channels/amazon-eventbridge/events-custom-eventbusname/)
+- [events/default](https://apis.io/channels/amazon-eventbridge/events-default/)
+- [events/partner/{partnerEventSource}](https://apis.io/channels/amazon-eventbridge/events-partner-partnereventsource/)
+- [events/scheduled](https://apis.io/channels/amazon-eventbridge/events-scheduled/)
+- [targets/lambda](https://apis.io/channels/amazon-eventbridge/targets-lambda/)
+- [targets/sns](https://apis.io/channels/amazon-eventbridge/targets-sns/)
+- [targets/sqs](https://apis.io/channels/amazon-eventbridge/targets-sqs/)
+- [targets/step-functions](https://apis.io/channels/amazon-eventbridge/targets-step-functions/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Eventbridge Agentic Access](https://apis.io/agentic-access/amazon-eventbridge/amazon-eventbridge-agentic-access/)
+
+#### JSON Schema (30)
+
+The data models the API reads and writes.
+
+- [CreateArchiveRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-create-archive-request/)
+- [CreateArchiveResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-create-archive-response/)
+- [CreateEventBusRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-create-event-bus-request/)
+- [CreateEventBusResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-create-event-bus-response/)
+- [DeleteEventBusRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-delete-event-bus-request/)
+- [DeleteRuleRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-delete-rule-request/)
+- [DescribeEventBusRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-describe-event-bus-request/)
+- [DescribeEventBusResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-describe-event-bus-response/)
+- [DescribeRuleRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-describe-rule-request/)
+- [DescribeRuleResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-describe-rule-response/)
+- [Amazon EventBridge Event](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-event/)
+- [EventBus](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-event-bus/)
+- [ListArchivesRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-archives-request/)
+- [ListArchivesResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-archives-response/)
+- [ListEventBusesRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-event-buses-request/)
+- [ListEventBusesResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-event-buses-response/)
+- [ListRulesRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-rules-request/)
+- [ListRulesResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-rules-response/)
+- [ListTargetsByRuleRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-request/)
+- [ListTargetsByRuleResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-response/)
+- [PutEventsRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-put-events-request/)
+- [PutEventsResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-put-events-response/)
+- [PutRuleRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-put-rule-request/)
+- [PutRuleResponse](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-put-rule-response/)
+- [PutTargetsRequest](https://apis.io/schemas/amazon-eventbridge/amazon-eventbridge-put-targets-request/)
+- …and 5 more published on APIs.io
+
+#### JSON Structure (30)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Eventbridge Create Archive Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-create-archive-request-structure/)
+- [Amazon Eventbridge Create Archive Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-create-archive-response-structure/)
+- [Amazon Eventbridge Create Event Bus Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-create-event-bus-request-structure/)
+- [Amazon Eventbridge Create Event Bus Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-create-event-bus-response-structure/)
+- [Amazon Eventbridge Delete Event Bus Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-delete-event-bus-request-structure/)
+- [Amazon Eventbridge Delete Rule Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-delete-rule-request-structure/)
+- [Amazon Eventbridge Describe Event Bus Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-describe-event-bus-request-structure/)
+- [Amazon Eventbridge Describe Event Bus Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-describe-event-bus-response-structure/)
+- [Amazon Eventbridge Describe Rule Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-describe-rule-request-structure/)
+- [Amazon Eventbridge Describe Rule Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-describe-rule-response-structure/)
+- [Amazon Eventbridge Event Bus Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-event-bus-structure/)
+- [Amazon Eventbridge Event Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-event-structure/)
+- [Amazon Eventbridge List Archives Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-archives-request-structure/)
+- [Amazon Eventbridge List Archives Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-archives-response-structure/)
+- [Amazon Eventbridge List Event Buses Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-event-buses-request-structure/)
+- [Amazon Eventbridge List Event Buses Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-event-buses-response-structure/)
+- [Amazon Eventbridge List Rules Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-rules-request-structure/)
+- [Amazon Eventbridge List Rules Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-rules-response-structure/)
+- [Amazon Eventbridge List Targets By Rule Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-request-structure/)
+- [Amazon Eventbridge List Targets By Rule Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-response-structure/)
+- [Amazon Eventbridge Put Events Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-put-events-request-structure/)
+- [Amazon Eventbridge Put Events Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-put-events-response-structure/)
+- [Amazon Eventbridge Put Rule Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-put-rule-request-structure/)
+- [Amazon Eventbridge Put Rule Response Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-put-rule-response-structure/)
+- [Amazon Eventbridge Put Targets Request Structure](https://apis.io/json-structure/amazon-eventbridge/amazon-eventbridge-put-targets-request-structure/)
+- …and 5 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Eventbridge Context](https://apis.io/jsonld/amazon-eventbridge/amazon-eventbridge-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Eventbridge Vocabulary](https://apis.io/vocabularies/amazon-eventbridge/amazon-eventbridge-vocabulary/)
+
+#### Examples (30)
+
+Example requests and responses.
+
+- [Amazon Eventbridge Create Archive Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-create-archive-request-example/)
+- [Amazon Eventbridge Create Archive Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-create-archive-response-example/)
+- [Amazon Eventbridge Create Event Bus Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-create-event-bus-request-example/)
+- [Amazon Eventbridge Create Event Bus Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-create-event-bus-response-example/)
+- [Amazon Eventbridge Delete Event Bus Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-delete-event-bus-request-example/)
+- [Amazon Eventbridge Delete Rule Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-delete-rule-request-example/)
+- [Amazon Eventbridge Describe Event Bus Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-describe-event-bus-request-example/)
+- [Amazon Eventbridge Describe Event Bus Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-describe-event-bus-response-example/)
+- [Amazon Eventbridge Describe Rule Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-describe-rule-request-example/)
+- [Amazon Eventbridge Describe Rule Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-describe-rule-response-example/)
+- [Amazon Eventbridge Event Bus Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-event-bus-example/)
+- [Amazon Eventbridge Event Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-event-example/)
+- [Amazon Eventbridge List Archives Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-archives-request-example/)
+- [Amazon Eventbridge List Archives Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-archives-response-example/)
+- [Amazon Eventbridge List Event Buses Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-event-buses-request-example/)
+- [Amazon Eventbridge List Event Buses Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-event-buses-response-example/)
+- [Amazon Eventbridge List Rules Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-rules-request-example/)
+- [Amazon Eventbridge List Rules Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-rules-response-example/)
+- [Amazon Eventbridge List Targets By Rule Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-request-example/)
+- [Amazon Eventbridge List Targets By Rule Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-list-targets-by-rule-response-example/)
+- [Amazon Eventbridge Put Events Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-put-events-request-example/)
+- [Amazon Eventbridge Put Events Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-put-events-response-example/)
+- [Amazon Eventbridge Put Rule Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-put-rule-request-example/)
+- [Amazon Eventbridge Put Rule Response Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-put-rule-response-example/)
+- [Amazon Eventbridge Put Targets Request Example](https://apis.io/examples/amazon-eventbridge/amazon-eventbridge-put-targets-request-example/)
+- …and 5 more published on APIs.io
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Amazon EventBridge API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge/)
+- [Amazon EventBridge Archives API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge-archives-api/)
+- [Amazon EventBridge Archives Event Buses API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge-event-buses-api/)
+- [Amazon EventBridge Archives Events API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge-events-api/)
+- [Amazon EventBridge Archives Rules API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge-rules-api/)
+- [Amazon EventBridge Archives Targets API](https://apis.io/collections/amazon-eventbridge/open-amazon-eventbridge-targets-api/)
+- [Amazon EventBridge API](https://apis.io/collections/amazon-eventbridge/postman-amazon-eventbridge/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon EventBridge — asyncapi rules](https://apis.io/rules/amazon-eventbridge/amazon-eventbridge-asyncapi-spectral-rules/)
+- [Amazon EventBridge — jsonschema rules](https://apis.io/rules/amazon-eventbridge/amazon-eventbridge-jsonschema-spectral-rules/)
+- [Amazon EventBridge API Rules](https://apis.io/rules/amazon-eventbridge/amazon-eventbridge-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Eventbridge Authentication](https://apis.io/security/amazon-eventbridge/amazon-eventbridge-authentication/)
+- [Amazon Eventbridge Domain Security](https://apis.io/security/amazon-eventbridge/amazon-eventbridge-domain-security/)
+- [Amazon Eventbridge Trust Center](https://apis.io/security/amazon-eventbridge/amazon-eventbridge-trust-center/)
+- [Amazon Eventbridge Vulnerability Disclosure](https://apis.io/security/amazon-eventbridge/amazon-eventbridge-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Eventbridge Plans Pricing](https://apis.io/plans/amazon-eventbridge/amazon-eventbridge-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Eventbridge Rate Limits](https://apis.io/rate-limits/amazon-eventbridge/amazon-eventbridge-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Eventbridge Finops](https://apis.io/finops/amazon-eventbridge/amazon-eventbridge-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/eventbridge/)
 - [Documentation](https://docs.aws.amazon.com/eventbridge/)
-- [Blog](https://aws.amazon.com/blogs/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/events/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [Status Page](https://health.aws.amazon.com/health/status)
 - [Support](https://aws.amazon.com/support/)
-- [F A Q](https://aws.amazon.com/eventbridge/faqs/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
-- [Compliance](https://aws.amazon.com/compliance/)
+- [Blog](https://aws.amazon.com/blogs/)
 - [Security](https://aws.amazon.com/security/)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/eventbridge)
-- [Knowledge Center](https://repost.aws/knowledge-center)
-- [Contact](https://aws.amazon.com/contact-us/)
-- [Spectral Rules](rules/amazon-eventbridge-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-eventbridge-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Compliance](https://aws.amazon.com/compliance/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 59.2** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 73.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 61.8 |
+
+**Agent readiness 25.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-eventbridge/](https://apis.io/providers/amazon-eventbridge/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon EventBridge: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-eventbridge/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
