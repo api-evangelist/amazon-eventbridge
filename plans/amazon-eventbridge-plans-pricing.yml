@@ -1,0 +1,185 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/eventbridge/pricing/
+sources:
+- https://aws.amazon.com/eventbridge/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: 'Live price tokens on the page did not render (templated placeholders); numeric figures captured
+  come from the page''s own worked pricing examples. Payload billing: each 64 KB chunk billed as one event
+  (8 KB for Schema Discovery).'
+plan_count: 11
+currency: USD
+plans:
+- name: Custom event buses - ingress (first 5 TB, per pricing example)
+  price_text: first 5,000 GB x $0.18
+  price: 0.18
+  currency: USD
+  period: per-use
+  unit: per GB
+  overage: 184 GB x $0.12
+- name: Custom event buses - egress (per pricing example)
+  price_text: 10,368 GB x $0.05
+  price: 0.05
+  currency: USD
+  period: per-use
+  unit: per GB
+- name: Custom event buses - storage beyond 24 hours (per pricing example)
+  price_text: 1,037 GB x $0.08
+  price: 0.08
+  currency: USD
+  period: month
+  unit: per GB-month
+  included_quota: First 24 hours Included
+- name: Event evaluation (per pricing example)
+  price_text: 5.184B events x $0.15/M
+  price: 0.15
+  currency: USD
+  period: per-use
+  unit: per million events evaluated
+- name: Custom event buses - classic ingestion (per pricing example)
+  price_text: 5M * $1.00/M = $5.00 per month
+  currency: USD
+  period: per-use
+  unit: per million events
+  included_quota: AWS management events Free
+- name: Pipes (per pricing example)
+  price_text: 0.5M * $0.40 = $0.20
+  currency: USD
+  period: per-use
+  unit: per million requests
+- name: Scheduler (per pricing example)
+  price_text: (20M – 14M Free Tier) * $1.00/M = $6.00
+  currency: USD
+  period: month
+  unit: per million scheduled invocations
+  included_quota: 14,000,000 invocations per month for free
+- name: API destinations (per pricing example)
+  price_text: 2M * $0.20/M = $0.40 per month
+  currency: USD
+  period: per-use
+  unit: per million invocations
+- name: Event replay archive processing (per pricing example)
+  price_text: $0.10/GB
+  price: 0.1
+  currency: USD
+  period: per-use
+  unit: per GB
+- name: Event replay storage (per pricing example)
+  price_text: $0.023/GB
+  price: 0.023
+  currency: USD
+  period: month
+  unit: per GB
+- name: Schema Registry / Discovery
+  price_text: Schema Registry = Free.
+  period: month
+  included_quota: 5M events included in Free Tier for Schema Discovery
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - data
+  - request
+  plans:
+  - name: Custom event buses - ingress (first 5 TB, per pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Custom event buses - egress (per pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Custom event buses - storage beyond 24 hours (per pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Event evaluation (per pricing example)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Custom event buses - classic ingestion (per pricing example)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Pipes (per pricing example)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Scheduler (per pricing example)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: API destinations (per pricing example)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Event replay archive processing (per pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Event replay storage (per pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Schema Registry / Discovery
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - month
