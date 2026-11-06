@@ -86,7 +86,7 @@ plans:
   period: month
   included_quota: 5M events included in Free Tier for Schema Discovery
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
@@ -146,18 +146,18 @@ x-canonical:
     - other
   - name: Scheduler (per pricing example)
     access: other
-    model: unstated
+    model: metered
     model_how: derived
     units:
-    - other
+    - request
     periods:
     - month
   - name: API destinations (per pricing example)
     access: other
-    model: unstated
+    model: metered
     model_how: derived
     units:
-    - other
+    - request
     periods:
     - other
   - name: Event replay archive processing (per pricing example)
