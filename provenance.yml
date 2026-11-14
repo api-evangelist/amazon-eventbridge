@@ -38,6 +38,12 @@ artifacts:
   authentication/amazon-eventbridge-authentication.yml:
     method: derived
     evidence: declared in the artifact
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  cli/amazon-eventbridge-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-eventbridge-archives-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-eventbridge-archives-api
@@ -74,6 +80,24 @@ artifacts:
   collections/amazon-eventbridge.postman_collection.json:
     method: derived
     evidence: openapi/amazon-eventbridge
+  compliance/amazon-eventbridge-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-eventbridge-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-eventbridge-conventions.yml:
+    method: searched
+    evidence: declared in the artifact
+  data-model/amazon-eventbridge-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/amazon-eventbridge-error-codes.yml:
+    method: searched
+    evidence: declared in the artifact
+  errors/amazon-eventbridge-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/amazon-eventbridge-create-archive-request-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -170,6 +194,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-eventbridge-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -179,10 +206,28 @@ artifacts:
   json-ld/amazon-eventbridge-context.jsonld:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-cancel-replay-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-api-destination-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-api-destination-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-create-archive-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-create-archive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-connection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-endpoint-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-endpoint-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-create-event-bus-request-schema.json:
@@ -191,16 +236,49 @@ artifacts:
   json-schema/amazon-eventbridge-create-event-bus-response-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-create-partner-event-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-deauthorize-connection-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-delete-connection-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-delete-event-bus-request-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-delete-partner-event-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-delete-rule-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-api-destination-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-connection-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-endpoint-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-describe-event-bus-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-describe-event-bus-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-event-source-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-partner-event-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-partner-event-source-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-describe-replay-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-describe-rule-request-schema.json:
@@ -215,16 +293,49 @@ artifacts:
   json-schema/amazon-eventbridge-event-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-api-destinations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-api-destinations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-list-archives-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-list-archives-response-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-connections-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-endpoints-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-list-event-buses-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-list-event-buses-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-event-sources-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-partner-event-source-accounts-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-partner-event-sources-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-partner-event-sources-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-replays-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-replays-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-list-rule-names-by-target-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-list-rules-request-schema.json:
@@ -243,6 +354,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-put-events-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-put-permission-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-eventbridge-put-rule-request-schema.json:
@@ -266,7 +380,34 @@ artifacts:
   json-schema/amazon-eventbridge-rule-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-eventbridge-start-replay-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-start-replay-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-eventbridge-target-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-api-destination-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-connection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-connection-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-endpoint-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-endpoint-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-event-bus-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-eventbridge-update-event-bus-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-structure/amazon-eventbridge-create-archive-request-structure.json:
@@ -362,7 +503,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -431,10 +572,24 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-eventbridge-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-eventbridge-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-eventbridge-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-eventbridge-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-eventbridge-mcp.yml:
+    method: searched
+    evidence: declared in the artifact
+  mcp/amazon-eventbridge-tool-crosswalk.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/amazon-eventbridge-api-destination-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -471,6 +626,12 @@ artifacts:
   openapi/amazon-eventbridge-targets-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  packages/amazon-eventbridge-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-eventbridge-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-eventbridge-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -480,13 +641,19 @@ artifacts:
   postman/amazon-eventbridge.postman_collection.json:
     method: derived
     evidence: openapi/amazon-eventbridge
+  privacy/amazon-eventbridge-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/amazon-eventbridge-rate-limits.yml:
-    method: generated
+    method: searched
     evidence: declared in the artifact
   rules/amazon-eventbridge-asyncapi-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-eventbridge-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-eventbridge-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-eventbridge-spectral-rules.yml:
@@ -501,12 +668,46 @@ artifacts:
   security/amazon-eventbridge-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-eventbridge-archive-and-replay.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-eventbridge-decommission-rule.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-eventbridge-route-events-to-targets.md:
+    method: generated
+    evidence: declared in the artifact
   sla/amazon-eventbridge-sla.yml:
     method: generated
     evidence: declared in the artifact
   smithy/eventbridge-2015-10-07.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/eventbridge/service/2015-10-07/eventbridge-2015-10-07.json
+      (sha256 827b198895a9, fetched 2026-11-11T21:09:42+00:00)
+  terms/amazon-eventbridge-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-eventbridge-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-eventbridge-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-eventbridge-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-eventbridge-aws-mcp-oauth-protected-resource.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-eventbridge-repost-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-eventbridge-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-eventbridge-well-known.yml:
     method: unknown
     evidence: no authorship recorded
